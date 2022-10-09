@@ -1,5 +1,7 @@
 package gestion;
 
+import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.*;
 
 import personas.Persona;
@@ -9,14 +11,14 @@ public class Beca {
     private final float criterio;
     private int cupos;
     private ArrayList<Persona> beneficiarios;
-    private ArrayList<Dictionary> cuposPorFacultad;
+	private ArrayList<Pair<Asignatura, float>> cuposPorFacultad;
     private static ArrayList<Beca> becas ;
 
     public Beca(){
-         //SE NECESITA DECLARAR LA REFERENCIA AL OTRO CONSTRUCTOR
+    	this(4, 20, null, null );
     }
     
-    public Beca(float criterio, int cupos, ArrayList<Persona> beneficiarios, ArrayList<Dictionary> cuposPorFacultad) {
+    public Beca(float criterio, int cupos, ArrayList<Persona> beneficiarios, ArrayList<Pair<Asignatura, float>> cuposPorFacultad) {
 		super();
 		this.criterio = criterio;
 		this.cupos = cupos;
@@ -26,14 +28,17 @@ public class Beca {
 
 	}
 
-
-
 	public boolean Eligibilidad(Persona beneficiario){
-		
+		boolean result;
+		if (beneficiario.calcularPromedio() > this.criterio && this.getCupos() > 0) {
+			
+		}
     }
 
     public void SetBeneficiarios(ArrayList<Persona> beneficiarios){
-        this.beneficiarios = beneficiarios;
+        
+    	
+    	
     }
 
     public ArrayList<Persona> getBeneficiarios() {

@@ -1,16 +1,8 @@
 package personas;
 
 import gestion.Asignatura;
-<<<<<<< Updated upstream
-import org.javatuples.Pair;
-=======
-<<<<<<< HEAD
 import gestion.LineasEnfasis;
-=======
 import org.javatuples.Pair;
->>>>>>> 63903186f37eb145a38c7e380941c16c95f40433
->>>>>>> Stashed changes
-
 import java.util.*;
 
 public class Estudiante extends Persona {
