@@ -2,13 +2,26 @@ package gestion;
 
 import java.util.*;
 
+import personas.Profesor;
+
 public class Asignatura {
 	private int creditos;
 	private ArrayList<Profesor> profesor;
 	private ArrayList<Asignatura> prerrequisitos;
 	private String lineaEnfasis;
-	private static Asignatura asignaturaPorEnfasis;
+	private static ArrayList<Asignatura> listaAsignaturas;
 	
+	
+	
+	public Asignatura(int creditos, ArrayList<Profesor> profesor, ArrayList<Asignatura> prerrequisitos,
+			String lineaEnfasis) {
+		super();
+		this.creditos = creditos;
+		this.profesor = profesor;
+		this.prerrequisitos = prerrequisitos;
+		this.lineaEnfasis = lineaEnfasis;
+	}
+
 	public void displayProfesores() {
 		
 	}
@@ -29,14 +42,6 @@ public class Asignatura {
 		this.profesor = profesor;
 	}
 
-	public ArrayList<Prerrequisitos> getPrerrequisitos() {
-		return prerrequisitos;
-	}
-
-	public void setPrerrequisitos(ArrayList<Prerrequisitos> prerrequisitos) {
-		this.prerrequisitos = prerrequisitos;
-	}
-
 	public String getLineaEnfasis() {
 		return lineaEnfasis;
 	}
@@ -45,12 +50,22 @@ public class Asignatura {
 		this.lineaEnfasis = lineaEnfasis;
 	}
 
-	public static Asignatura getAsignaturaPorEnfasis() {
-		return asignaturaPorEnfasis;
+	public ArrayList<Asignatura> getPrerrequisitos() {
+		return prerrequisitos;
 	}
 
-	public static void setAsignaturaPorEnfasis(Asignatura asignaturaPorEnfasis) {
-		Asignatura.asignaturaPorEnfasis = asignaturaPorEnfasis;
+	public void setPrerrequisitos(ArrayList<Asignatura> prerrequisitos) {
+		this.prerrequisitos = prerrequisitos;
 	}
+
+	public static ArrayList<Asignatura> getListaAsignaturas() {
+		return listaAsignaturas;
+	}
+
+	public static void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
+		Asignatura.listaAsignaturas = listaAsignaturas;
+	}
+
+
 	
 }

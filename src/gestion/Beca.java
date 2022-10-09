@@ -2,20 +2,34 @@ package gestion;
 
 import java.util.*;
 
+import personas.Persona;
+
 public class Beca {
 
-    private float criterio;
+    private final float criterio;
     private int cupos;
-    ArrayList<Persona> beneficiarios = new ArrayList<>();
-    ArrayList<Facultad> facultad = new ArrayList<>();
-    private static ArrayList<Beca> becas = new ArrayList<>();
+    private ArrayList<Persona> beneficiarios;
+    private ArrayList<Dictionary> cuposPorFacultad;
+    private static ArrayList<Beca> becas ;
 
     public Beca(){
-        Beca.becas.add(this);
+         //SE NECESITA DECLARAR LA REFERENCIA AL OTRO CONSTRUCTOR
     }
+    
+    public Beca(float criterio, int cupos, ArrayList<Persona> beneficiarios, ArrayList<Dictionary> cuposPorFacultad) {
+		super();
+		this.criterio = criterio;
+		this.cupos = cupos;
+		this.beneficiarios = beneficiarios;
+		this.cuposPorFacultad = cuposPorFacultad;
+        Beca.becas.add(this);
 
-    public boolean Eligibilidad(Persona beneficiario){
+	}
 
+
+
+	public boolean Eligibilidad(Persona beneficiario){
+		
     }
 
     public void SetBeneficiarios(ArrayList<Persona> beneficiarios){
@@ -30,10 +44,6 @@ public class Beca {
         return criterio;
     }
 
-    public void setCriterio(float criterio) {
-        this.criterio = criterio;
-    }
-
     public int getCupos() {
         return cupos;
     }
@@ -46,13 +56,6 @@ public class Beca {
         this.beneficiarios = beneficiarios;
     }
 
-    public ArrayList<Facultad> getFacultad() {
-        return facultad;
-    }
-
-    public void setFacultad(ArrayList<Facultad> facultad) {
-        this.facultad = facultad;
-    }
 
     public static ArrayList<Beca> getBecas() {
         return becas;
@@ -61,4 +64,14 @@ public class Beca {
     public static void setBecas(ArrayList<Beca> becas) {
         Beca.becas = becas;
     }
+
+	public ArrayList<Dictionary> getCuposPorFacultad() {
+		return cuposPorFacultad;
+	}
+
+	public void setCuposPorFacultad(ArrayList<Dictionary> cuposPorFacultad) {
+		this.cuposPorFacultad = cuposPorFacultad;
+	}
+    
+    
 }
