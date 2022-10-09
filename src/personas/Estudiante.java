@@ -7,20 +7,32 @@ import java.util.*;
 
 public class Estudiante extends Persona {
 
-	private ArrayList<Pair<Asignatura, float>> asignaturasInscritas;
+	private HashMap<Asignatura, float> asignaturasInscritas;
 	private float promedio;
 	private int semestre;
 	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
-	
+
+	public Estudiante(java.util.HashMap<Asignatura, float> asignaturasInscritas, float promedio,
+					  int semestre, LineasEnfasis lineaEnfasis,
+					  java.util.ArrayList<Asignatura> asignaturasAprobadas) {
+
+		this.asignaturasInscritas = asignaturasInscritas;
+		this.promedio = promedio;
+		this.semestre = semestre;
+		this.lineaEnfasis = lineaEnfasis;
+		this.asignaturasAprobadas = asignaturasAprobadas;
+	}
+
 	@Override
 	public float calcularPromedio() {
 		float promedio = 0;
 		int creditosInscritos = 0;
 
-		for (Pair informacionAsignatura: asignaturasInscritas) {
-			float nota = informacionAsignatura.getValue1();
-			int creditos = informacionAsignatura.getValue0().getCreditos();
+		for (Asignatura informacionAsignatura: asignaturasInscritas.keySet()) {
+
+			float promedio = asignaturasInscritas.get(informacionAsignatura);
+			int creditos = informacionAsignatura.getCreditos();
 
 			creditosInscritos += creditos;
 			promedio += creditos * nota;
