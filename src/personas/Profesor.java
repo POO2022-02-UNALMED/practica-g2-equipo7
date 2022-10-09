@@ -2,7 +2,7 @@ package personas;
 
 import java.util.*;
 
-public class Profesor {
+public class Profesor extends Persona{
 
 	private ArrayList<Dictionary> asignaturasDictadas;
 	private Facultad facultad;
