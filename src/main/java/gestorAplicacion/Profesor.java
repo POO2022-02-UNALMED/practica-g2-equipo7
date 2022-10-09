@@ -1,6 +1,3 @@
-ackage src.main.java.gestorAplicacion;
-
-import java.util.*;
 
 public class Profesor {
 
@@ -13,4 +10,27 @@ public class Profesor {
 		return 0;
 	}
 
+	public ArrayList<Dictionary> getAsignaturasDictadas() {
+		return asignaturasDictadas;
+	}
+
+	public void setAsignaturasDictadas(ArrayList<Dictionary> asignaturasDictadas) {
+		this.asignaturasDictadas = asignaturasDictadas;
+	}
+
+	public Facultad getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(Facultad facultad) {
+		this.facultad = facultad;
+	}
+
+	public Date getFechaIngreso() {
+		return fechaIngreso;
+	}
+
+	public void setFechaIngreso(Date fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
 }
