@@ -5,7 +5,7 @@ import java.util.*;
 public class Asignatura {
 	private int creditos;
 	private ArrayList<Profesor> profesor;
-	private ArrayList<Prerrequisitos> prerrequisitos;
+	private ArrayList<Asignatura> prerrequisitos;
 	private String lineaEnfasis;
 	private static Asignatura asignaturaPorEnfasis;
 	
