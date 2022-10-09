@@ -2,12 +2,13 @@ package personas;
 
 import Persona;
 import gestion.Asignatura;
+import org.javatuples.Pair;
 
 import java.util.*;
 
 public class Estudiante extends Persona {
 
-	private ArrayList<Dictionary> asignaturasInscritas;
+	private ArrayList<Pair<Asignatura, float>> asignaturasInscritas;
 	private float promedio;
 	private int semestre;
 	private String LineaEnfasis;
@@ -15,7 +16,19 @@ public class Estudiante extends Persona {
 	
 	@Override
 	public float calcularPromedio() {
+		float promedio = 0;
+		int creditosInscritos = 0;
 
+		for (Pair informacionAsignatura: asignaturasInscritas) {
+			float nota = informacionAsignatura.getValue1();
+			int creditos = informacionAsignatura.getValue0().getCreditos();
+
+			creditosInscritos += creditos;
+			promedio += creditos * nota;
+		}
+
+		promedio = promedio / creditosInscritos;
+		return promedio;
 	}
 	
 	public String calidadEstudiante() {
@@ -26,11 +39,11 @@ public class Estudiante extends Persona {
 		
 	}
 
-	public ArrayList<Dictionary> getAsignaturasInscritas() {
+	public ArrayList<Pair<Asignatura, float>> getAsignaturasInscritas() {
 		return asignaturasInscritas;
 	}
 
-	public void setAsignaturasInscritas(ArrayList<Dictionary> asignaturasInscritas) {
+	public void setAsignaturasInscritas(ArrayList<Pair<Asignatura, float>> asignaturasInscritas) {
 		this.asignaturasInscritas = asignaturasInscritas;
 	}
 
