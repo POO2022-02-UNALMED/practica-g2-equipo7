@@ -1,8 +1,15 @@
 package personas;
 
-import Persona;
 import gestion.Asignatura;
+<<<<<<< Updated upstream
 import org.javatuples.Pair;
+=======
+<<<<<<< HEAD
+import gestion.LineasEnfasis;
+=======
+import org.javatuples.Pair;
+>>>>>>> 63903186f37eb145a38c7e380941c16c95f40433
+>>>>>>> Stashed changes
 
 import java.util.*;
 
@@ -11,7 +18,7 @@ public class Estudiante extends Persona {
 	private ArrayList<Pair<Asignatura, float>> asignaturasInscritas;
 	private float promedio;
 	private int semestre;
-	private String LineaEnfasis;
+	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
 	
 	@Override
@@ -34,9 +41,16 @@ public class Estudiante extends Persona {
 	public String calidadEstudiante() {
 		
 	}
-	
+
 	public ArrayList<Asignatura> recomendarAsignaturas(){
-		
+		ArrayList<Asignatura> listaEnfasis = new ArrayList<Asignatura>();
+		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
+		for (Asignatura i: listado) {
+			if (i.getLineaEnfasis().equals(lineaEnfasis)){
+				listaEnfasis.add(i);
+			}
+		}
+		return listado;
 	}
 
 	public ArrayList<Pair<Asignatura, float>> getAsignaturasInscritas() {
@@ -63,12 +77,12 @@ public class Estudiante extends Persona {
 		this.semestre = semestre;
 	}
 
-	public String getLineaEnfasis() {
-		return LineaEnfasis;
+	public LineasEnfasis getLineaEnfasis() {
+		return lineaEnfasis;
 	}
 
-	public void setLineaEnfasis(String lineaEnfasis) {
-		LineaEnfasis = lineaEnfasis;
+	public void setLineaEnfasis(LineasEnfasis lineaEnfasis) {
+		this.lineaEnfasis = lineaEnfasis;
 	}
 
 	public ArrayList<Asignatura> getAsignaturasAprobadas() {

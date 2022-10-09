@@ -8,13 +8,13 @@ public class Asignatura {
 	private int creditos;
 	private ArrayList<Profesor> profesor;
 	private ArrayList<Asignatura> prerrequisitos;
-	private String lineaEnfasis;
+	private LineasEnfasis lineaEnfasis;
 	private static ArrayList<Asignatura> listaAsignaturas;
 	
 	
 	
 	public Asignatura(int creditos, ArrayList<Profesor> profesor, ArrayList<Asignatura> prerrequisitos,
-			String lineaEnfasis) {
+			LineasEnfasis lineaEnfasis) {
 		super();
 		this.creditos = creditos;
 		this.profesor = profesor;
@@ -42,11 +42,11 @@ public class Asignatura {
 		this.profesor = profesor;
 	}
 
-	public String getLineaEnfasis() {
+	public LineasEnfasis getLineaEnfasis() {
 		return lineaEnfasis;
 	}
 
-	public void setLineaEnfasis(String lineaEnfasis) {
+	public void setLineaEnfasis(LineasEnfasis lineaEnfasis) {
 		this.lineaEnfasis = lineaEnfasis;
 	}
 
@@ -65,7 +65,5 @@ public class Asignatura {
 	public static void setListaAsignaturas(ArrayList<Asignatura> listaAsignaturas) {
 		Asignatura.listaAsignaturas = listaAsignaturas;
 	}
-
-
 	
 }
