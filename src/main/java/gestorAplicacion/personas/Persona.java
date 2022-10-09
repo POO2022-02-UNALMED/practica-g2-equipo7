@@ -1,4 +1,4 @@
-package gestorAplicacion;
+package src.main.java.gestorAplicacion.personas;
 import java.util.*;
 
 public abstract class Persona {

@@ -1,4 +1,4 @@
-package src.main.java.gestorAplicacion;
+package src.main.java.gestorAplicacion.personas;
 
 import Persona;
 import java.util.*;

@@ -5,5 +5,5 @@ import java.util.*;
 public class Profesor {
 
 	private ArrayList<Dictionary> asignaturasDictadas;
-	
+
 }
