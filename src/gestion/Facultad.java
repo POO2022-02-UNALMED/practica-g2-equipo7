@@ -1,9 +1,12 @@
 package gestion;
+
 import java.util.*;
+import personas.Estudiante;
+import personas.Profesor;
 
 public class Facultad {
 	private String nombre;
-	ArrayList<Profesor> profesoresVinculados = new ArrayList<profesor>();
+	ArrayList<Profesor> profesoresVinculados = new ArrayList<Profesor>();
 	ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	
 	public void vincularProfesor(Profesor profesor) {
