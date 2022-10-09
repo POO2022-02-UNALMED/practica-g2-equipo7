@@ -34,17 +34,28 @@ public class Estudiante extends Persona {
 		
 	}
 
+	// Funcionalidad Recomendacion de asignaturas
 	public ArrayList<Asignatura> recomendarAsignaturas(){
+		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listaEnfasis = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
+		
 		for (Asignatura i: listado) {
 			if (i.getLineaEnfasis().equals(lineaEnfasis)){
 				listaEnfasis.add(i);
 			}
 		}
-		return listado;
+		
+		for (Asignatura i: listaEnfasis) {
+			if (asignaturasAprobadas.containsAll(i.getPrerrequisitos())) {
+				listaRecomendar.add(i);
+			}
+		}
+		
+		return listaRecomendar;
 	}
 
+	
 	public ArrayList<Pair<Asignatura, float>> getAsignaturasInscritas() {
 		return asignaturasInscritas;
 	}
