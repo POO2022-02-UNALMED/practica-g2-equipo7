@@ -1,6 +1,6 @@
 package src.main.java.gestorAplicacion.gestion;
 
-import java.util.*
+import java.util.*;
 
 public class Beca {
 

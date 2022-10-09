@@ -1,3 +1,6 @@
+package src.main.java.gestorAplicacion.personas;
+
+import java.util.*;
 
 public class Profesor {
 
