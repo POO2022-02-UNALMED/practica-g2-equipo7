@@ -1,4 +1,4 @@
-package src.main.java.gestorAplicacion.gestion;
+package gestion;
 
 import java.util.*;
 
