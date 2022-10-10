@@ -1,23 +1,28 @@
 package personas;
+import gestion.Facultad;
 
 import java.util.*;
 
 public class Profesor extends Persona{
 
-	private ArrayList<Dictionary> asignaturasDictadas;
+	private HashMap<String, Float> asignaturasDictadas;
 	private Facultad facultad;
 	private Date fechaIngreso;
 
 	@Override
-	private float calcularPromedio(){
-		return 0;
+	public float calcularPromedio(){
+		float sum = 0;
+		for(String key: asignaturasDictadas.keySet()){
+			sum += asignaturasDictadas.get(key);
+		}
+		return sum/asignaturasDictadas.size();
 	}
 
-	public ArrayList<Dictionary> getAsignaturasDictadas() {
+	public HashMap<String, Float> getAsignaturasDictadas() {
 		return asignaturasDictadas;
 	}
 
-	public void setAsignaturasDictadas(ArrayList<Dictionary> asignaturasDictadas) {
+	public void setAsignaturasDictadas(HashMap<String, Float> asignaturasDictadas) {
 		this.asignaturasDictadas = asignaturasDictadas;
 	}
 
