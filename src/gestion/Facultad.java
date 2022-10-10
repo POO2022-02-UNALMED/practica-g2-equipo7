@@ -7,8 +7,16 @@ import personas.Profesor;
 public class Facultad {
 	private String nombre;
 	ArrayList<Profesor> profesoresVinculados = new ArrayList<Profesor>();
-	ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
-	
+	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+	private static ArrayList<Facultad> facultades = new ArrayList<>();
+
+	public Facultad(String nombre, ArrayList<Profesor> profesoresVinculados, ArrayList<Estudiante> estudiantes) {
+		this.nombre = nombre;
+		this.profesoresVinculados = profesoresVinculados;
+		this.estudiantes = estudiantes;
+		facultades.add(this);
+	}
+
 	public void vincularProfesor(Profesor profesor) {
 		profesoresVinculados.add(profesor);
 	}
@@ -40,5 +48,12 @@ public class Facultad {
 	public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
-	
+
+	public static ArrayList<Facultad> getFacultades() {
+		return facultades;
+	}
+
+	public static void setFacultades(ArrayList<Facultad> facultades) {
+		Facultad.facultades = facultades;
+	}
 }

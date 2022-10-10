@@ -9,6 +9,11 @@ public class Profesor extends Persona{
 	private Facultad facultad;
 	private Date fechaIngreso;
 
+	public Profesor(HashMap<String, Float> asignaturasDictadas, Facultad facultad, Date fechaIngreso) {
+		this.asignaturasDictadas = asignaturasDictadas;
+		this.facultad = facultad;
+		this.fechaIngreso = fechaIngreso;
+	}
 	@Override
 	public float calcularPromedio(){
 		float sum = 0;

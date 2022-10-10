@@ -1,19 +1,19 @@
 package personas;
 
 import gestion.Asignatura;
+import gestion.Facultad;
 import gestion.LineasEnfasis;
-import org.javatuples.Pair;
 import java.util.*;
 
 public class Estudiante extends Persona {
 
-	private HashMap<Asignatura, float> asignaturasInscritas;
+	private HashMap<Asignatura, Float> asignaturasInscritas;
 	private float promedio;
 	private int semestre;
 	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
 
-	public Estudiante(java.util.HashMap<Asignatura, float> asignaturasInscritas, float promedio,
+	public Estudiante(java.util.HashMap<Asignatura, Float> asignaturasInscritas, float promedio,
 					  int semestre, LineasEnfasis lineaEnfasis,
 					  java.util.ArrayList<Asignatura> asignaturasAprobadas) {
 
@@ -31,7 +31,7 @@ public class Estudiante extends Persona {
 
 		for (Asignatura informacionAsignatura: asignaturasInscritas.keySet()) {
 
-			float promedio = asignaturasInscritas.get(informacionAsignatura);
+			promedio = asignaturasInscritas.get(informacionAsignatura);
 			int creditos = informacionAsignatura.getCreditos();
 
 			creditosInscritos += creditos;
@@ -43,7 +43,28 @@ public class Estudiante extends Persona {
 	}
 	
 	public String calidadEstudiante() {
-		
+		return "aux";
+	}
+
+	// Funcionalidad posición en el semestre
+	public String posicionSemestre(Estudiante estudiante){
+		int posEstudiante = 1;
+
+		for (Facultad f: Facultad.getFacultades()) {
+			if(f.getEstudiantes().contains(estudiante)){
+				for (Estudiante e: f.getEstudiantes()){
+					if(e.getSemestre() == estudiante.getSemestre()){
+						if(e.getPromedio() > estudiante.getPromedio()){
+							posEstudiante += 1;
+						}
+					}
+				}
+				return "Posición " + posEstudiante +
+						" entre estudiantes del semestre " + estudiante.getSemestre() +
+						" de la facultad " + f.getNombre();
+			}
+		}
+		return "Estudiante no encontrado";
 	}
 
 	// Funcionalidad Recomendacion de asignaturas
@@ -67,12 +88,11 @@ public class Estudiante extends Persona {
 		return listaRecomendar;
 	}
 
-	
-	public ArrayList<Pair<Asignatura, float>> getAsignaturasInscritas() {
+	public HashMap<Asignatura, Float> getAsignaturasInscritas() {
 		return asignaturasInscritas;
 	}
 
-	public void setAsignaturasInscritas(ArrayList<Pair<Asignatura, float>> asignaturasInscritas) {
+	public void setAsignaturasInscritas(HashMap<Asignatura, Float> asignaturasInscritas) {
 		this.asignaturasInscritas = asignaturasInscritas;
 	}
 
