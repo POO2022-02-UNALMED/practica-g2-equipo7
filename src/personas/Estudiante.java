@@ -3,6 +3,7 @@ package personas;
 import gestion.Asignatura;
 import gestion.Facultad;
 import gestion.LineasEnfasis;
+import gestion.CalidadEstudiante;
 import java.util.*;
 
 public class Estudiante extends Persona {
@@ -43,7 +44,7 @@ public class Estudiante extends Persona {
 	}
 	
 	public String calidadEstudiante() {
-		return "aux";
+		return CalidadEstudiante.ObtenerCalidadEstudiante(this.promedio);
 	}
 
 	// Funcionalidad posición en el semestre
