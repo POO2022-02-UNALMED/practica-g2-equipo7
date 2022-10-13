@@ -75,7 +75,7 @@ public class Estudiante extends Persona {
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
 		
 		for (Asignatura i: listado) {
-			if (i.getLineaEnfasis().equals(lineaEnfasis)){
+			if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i)){
 				listaEnfasis.add(i);
 			}
 		}

@@ -6,7 +6,7 @@ import personas.Profesor;
 
 public class Facultad {
 	private String nombre;
-	ArrayList<Profesor> profesoresVinculados = new ArrayList<Profesor>();
+	private ArrayList<Profesor> profesoresVinculados = new ArrayList<Profesor>();
 	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
 	private static ArrayList<Facultad> facultades = new ArrayList<>();
 
