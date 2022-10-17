@@ -1,8 +1,8 @@
-package gestion;
+package gestorAplicacion.gestion;
 
 import java.util.*;
-
-import personas.Profesor;
+import gestorAplicacion.gestion.*;
+import gestorAplicacion.personas.*;
 
 public class Asignatura {
 	private int creditos;

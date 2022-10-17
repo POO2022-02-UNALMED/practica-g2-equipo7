@@ -1,8 +1,8 @@
-package gestion;
+package gestorAplicacion.gestion;
 
 import java.util.*;
-
-import personas.*;
+import gestorAplicacion.gestion.*;
+import gestorAplicacion.personas.*;
 
 public class Beca {
 
@@ -31,7 +31,7 @@ public class Beca {
 
 	private boolean Elegibilidad(Persona beneficiario) {
 		float promedio = beneficiario.calcularPromedio();
-		boolean result = (promedio>= criterio);
+		boolean result = (promedio >= criterio);
 		return result;
 	}
 
@@ -63,9 +63,7 @@ public class Beca {
 					}
 				}
 			}
-
 		}
-
 	}
 
 	public ArrayList<Persona> getBeneficiarios() {

@@ -1,10 +1,8 @@
-package personas;
+package gestorAplicacion.personas;
 
-import gestion.Asignatura;
-import gestion.Facultad;
-import gestion.LineasEnfasis;
-import gestion.CalidadEstudiante;
 import java.util.*;
+import gestorAplicacion.gestion.*;
+import gestorAplicacion.personas.*;
 
 public class Estudiante extends Persona {
 
@@ -25,14 +23,13 @@ public class Estudiante extends Persona {
 		this.asignaturasAprobadas = asignaturasAprobadas;
 	}
 
-	@Override
 	public float calcularPromedio() {
 		float promedio = 0;
 		int creditosInscritos = 0;
 
 		for (Asignatura informacionAsignatura: asignaturasInscritas.keySet()) {
 
-			promedio = asignaturasInscritas.get(informacionAsignatura);
+			float nota = asignaturasInscritas.get(informacionAsignatura);
 			int creditos = informacionAsignatura.getCreditos();
 
 			creditosInscritos += creditos;
@@ -43,7 +40,7 @@ public class Estudiante extends Persona {
 		return promedio;
 	}
 	
-	public String calidadEstudiante() {
+	public CalidadEstudiante calidadEstudiante() {
 		return CalidadEstudiante.ObtenerCalidadEstudiante(this.promedio);
 	}
 

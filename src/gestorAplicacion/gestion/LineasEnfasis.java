@@ -1,4 +1,4 @@
-package gestion;
+package gestorAplicacion.gestion;
 
 public enum LineasEnfasis {
 	SUELOS, SANIDADVEGETAL, FISIOLOGIAVEGETAYBIOTECNOLOGIA, FITOMEJORAMIENTO,

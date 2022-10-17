@@ -1,7 +1,7 @@
-package personas;
-import gestion.Facultad;
-
+package gestorAplicacion.personas;
 import java.util.*;
+import gestorAplicacion.gestion.*;
+import gestorAplicacion.personas.*;
 
 public class Profesor extends Persona{
 

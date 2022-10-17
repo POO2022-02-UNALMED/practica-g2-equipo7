@@ -1,5 +1,7 @@
-package personas;
+package gestorAplicacion.personas;
 import java.util.*;
+import gestorAplicacion.gestion.*;
+import gestorAplicacion.personas.*;
 
 public abstract class Persona {
 	private  int documento;
@@ -8,6 +10,7 @@ public abstract class Persona {
 	
 	public abstract float calcularPromedio();
 
+	
 	public int getDocumento() {
 		return documento;
 	}

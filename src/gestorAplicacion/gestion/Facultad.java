@@ -1,8 +1,11 @@
-package gestion;
+package gestorAplicacion.gestion;
 
 import java.util.*;
-import personas.Estudiante;
-import personas.Profesor;
+
+import java.util.*;
+import gestorAplicacion.gestion.*;
+import gestorAplicacion.personas.*;
+
 
 public class Facultad {
 	private String nombre;
