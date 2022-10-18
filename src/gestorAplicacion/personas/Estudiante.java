@@ -12,9 +12,8 @@ public class Estudiante extends Persona {
 	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
 
-	public Estudiante(java.util.HashMap<Asignatura, Float> asignaturasInscritas, float promedio,
-					  int semestre, LineasEnfasis lineaEnfasis,
-					  java.util.ArrayList<Asignatura> asignaturasAprobadas) {
+	public Estudiante(HashMap<Asignatura, Float> asignaturasInscritas, float promedio, int semestre,
+			LineasEnfasis lineaEnfasis, java.util.ArrayList<Asignatura> asignaturasAprobadas) {
 
 		this.asignaturasInscritas = asignaturasInscritas;
 		this.promedio = promedio;
@@ -23,11 +22,15 @@ public class Estudiante extends Persona {
 		this.asignaturasAprobadas = asignaturasAprobadas;
 	}
 
+	public Estudiante() {
+		this(null, 3, 1, null, null);
+	}
+
 	public float calcularPromedio() {
 		float promedio = 0;
 		int creditosInscritos = 0;
 
-		for (Asignatura informacionAsignatura: asignaturasInscritas.keySet()) {
+		for (Asignatura informacionAsignatura : asignaturasInscritas.keySet()) {
 
 			float nota = asignaturasInscritas.get(informacionAsignatura);
 			int creditos = informacionAsignatura.getCreditos();
@@ -39,50 +42,49 @@ public class Estudiante extends Persona {
 		promedio = promedio / creditosInscritos;
 		return promedio;
 	}
-	
+
 	public CalidadEstudiante calidadEstudiante() {
 		return CalidadEstudiante.ObtenerCalidadEstudiante(this.promedio);
 	}
 
 	// Funcionalidad posición en el semestre
-	public String posicionSemestre(Estudiante estudiante){
+	public String posicionSemestre(Estudiante estudiante) {
 		int posEstudiante = 1;
 
-		for (Facultad f: Facultad.getFacultades()) {
-			if(f.getEstudiantes().contains(estudiante)){
-				for (Estudiante e: f.getEstudiantes()){
-					if(e.getSemestre() == estudiante.getSemestre()){
-						if(e.getPromedio() > estudiante.getPromedio()){
+		for (Facultad f : Facultad.getFacultades()) {
+			if (f.getEstudiantes().contains(estudiante)) {
+				for (Estudiante e : f.getEstudiantes()) {
+					if (e.getSemestre() == estudiante.getSemestre()) {
+						if (e.getPromedio() > estudiante.getPromedio()) {
 							posEstudiante += 1;
 						}
 					}
 				}
-				return "Posición " + posEstudiante +
-						" entre estudiantes del semestre " + estudiante.getSemestre() +
-						" de la facultad " + f.getNombre();
+				return "Posición " + posEstudiante + " entre estudiantes del semestre " + estudiante.getSemestre()
+						+ " de la facultad " + f.getNombre();
 			}
 		}
 		return "Estudiante no encontrado";
 	}
 
 	// Funcionalidad Recomendacion de asignaturas
-	public ArrayList<Asignatura> recomendarAsignaturas(){
+	public ArrayList<Asignatura> recomendarAsignaturas() {
 		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listaEnfasis = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
-		
-		for (Asignatura i: listado) {
-			if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i)){
+
+		for (Asignatura i : listado) {
+			if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i)) {
 				listaEnfasis.add(i);
 			}
 		}
-		
-		for (Asignatura i: listaEnfasis) {
+
+		for (Asignatura i : listaEnfasis) {
 			if (asignaturasAprobadas.containsAll(i.getPrerrequisitos())) {
 				listaRecomendar.add(i);
 			}
 		}
-		
+
 		return listaRecomendar;
 	}
 

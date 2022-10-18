@@ -19,6 +19,10 @@ public class Facultad {
 		this.estudiantes = estudiantes;
 		facultades.add(this);
 	}
+	
+	public Facultad() {
+		this("Minas", null, null);
+	}
 
 	public void vincularProfesor(Profesor profesor) {
 		profesoresVinculados.add(profesor);

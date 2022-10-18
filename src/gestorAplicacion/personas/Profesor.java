@@ -14,6 +14,11 @@ public class Profesor extends Persona{
 		this.facultad = facultad;
 		this.fechaIngreso = fechaIngreso;
 	}
+	
+	public Profesor() {
+		this(null, null, null);
+	}
+	
 	@Override
 	public float calcularPromedio(){
 		float sum = 0;

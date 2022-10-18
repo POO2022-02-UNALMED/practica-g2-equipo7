@@ -16,6 +16,7 @@ public class Administrador {
 		sc.nextLine();
 		return sc.nextLine();
 	}
+	
 
 	public static void main(String args[]) {
 		// Departamento dpto = new Departamento (/' noffbre Archivo '/);

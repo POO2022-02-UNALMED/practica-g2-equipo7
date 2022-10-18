@@ -22,10 +22,10 @@ public class Asignatura {
 		this.lineaEnfasis = lineaEnfasis;
 	}
 
-	public void displayProfesores() {
-		
+	public Asignatura() {
+		this(3, null, null, null);
 	}
-
+	
 	public int getCreditos() {
 		return creditos;
 	}
