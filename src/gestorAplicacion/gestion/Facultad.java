@@ -1,35 +1,36 @@
 package gestorAplicacion.gestion;
 
+import java.io.Serializable;
 import java.util.*;
 
 import java.util.*;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-
-public class Facultad {
+public class Facultad implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
-	private ArrayList<Profesor> profesoresVinculados = new ArrayList<Profesor>();
-	private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
-	private static ArrayList<Facultad> facultades = new ArrayList<>();
+	private ArrayList<Profesor> profesoresVinculados;
+	private ArrayList<Estudiante> estudiantes;
+	private static ArrayList<Facultad> listaFacultades = new ArrayList<Facultad>();
 
 	public Facultad(String nombre, ArrayList<Profesor> profesoresVinculados, ArrayList<Estudiante> estudiantes) {
 		this.nombre = nombre;
 		this.profesoresVinculados = profesoresVinculados;
 		this.estudiantes = estudiantes;
-		facultades.add(this);
+		listaFacultades.add(this);
 	}
-	
-	public Facultad() {
-		this("Minas", null, null);
-	}
+
 
 	public void vincularProfesor(Profesor profesor) {
 		profesoresVinculados.add(profesor);
 	}
-	
+
 	public void crearAsignatura(Asignatura asignatura) {
-		
+
 	}
 
 	public String getNombre() {
@@ -56,11 +57,11 @@ public class Facultad {
 		this.estudiantes = estudiantes;
 	}
 
-	public static ArrayList<Facultad> getFacultades() {
-		return facultades;
+	public static ArrayList<Facultad> getListaFacultades() {
+		return listaFacultades;
 	}
 
-	public static void setFacultades(ArrayList<Facultad> facultades) {
-		Facultad.facultades = facultades;
+	public static void setListaFacultades(ArrayList<Facultad> listaFacultades) {
+		Facultad.listaFacultades = listaFacultades;
 	}
 }

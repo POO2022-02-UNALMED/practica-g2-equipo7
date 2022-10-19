@@ -1,31 +1,38 @@
 package gestorAplicacion.personas;
+
+import java.io.Serializable;
 import java.util.*;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-public class Profesor extends Persona{
+public class Profesor extends Persona implements Serializable, Comparable<Profesor>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HashMap<String, Float> asignaturasDictadas;
 	private Facultad facultad;
 	private Date fechaIngreso;
+	public static ArrayList<Profesor> listaProfesores = new ArrayList<Profesor>();
 
-	public Profesor(HashMap<String, Float> asignaturasDictadas, Facultad facultad, Date fechaIngreso) {
+
+	public Profesor(int documento, String nombre, int edad, HashMap<String, Float> asignaturasDictadas,
+			Facultad facultad, Date fechaIngreso) {
+		super(documento, nombre, edad);
 		this.asignaturasDictadas = asignaturasDictadas;
 		this.facultad = facultad;
 		this.fechaIngreso = fechaIngreso;
+		Profesor.listaProfesores.add(this);
 	}
-	
-	public Profesor() {
-		this(null, null, null);
-	}
-	
+
 	@Override
-	public float calcularPromedio(){
+	public float calcularPromedio() {
 		float sum = 0;
-		for(String key: asignaturasDictadas.keySet()){
+		for (String key : asignaturasDictadas.keySet()) {
 			sum += asignaturasDictadas.get(key);
 		}
-		return sum/asignaturasDictadas.size();
+		return sum / asignaturasDictadas.size();
 	}
 
 	public HashMap<String, Float> getAsignaturasDictadas() {
@@ -51,4 +58,21 @@ public class Profesor extends Persona{
 	public void setFechaIngreso(Date fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
+
+	public static ArrayList<Profesor> getListaProfesores() {
+		return listaProfesores;
+	}
+
+	public static void setListaProfesores(ArrayList<Profesor> listaProfesores) {
+		Profesor.listaProfesores = listaProfesores;
+	}
+
+	@Override
+	public int compareTo(Profesor o) {
+		return (int) ((o.calcularPromedio()*1000) - (this.calcularPromedio()*1000));
+	}
+	
+	
+	
+	
 }

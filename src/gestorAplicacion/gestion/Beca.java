@@ -1,31 +1,34 @@
 package gestorAplicacion.gestion;
 
+import java.io.Serializable;
 import java.util.*;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-public class Beca {
+public class Beca implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final float criterio;
 	private int cupos;
 	private ArrayList<Persona> beneficiarios;
 	private HashMap<Facultad, Integer> cuposPorFacultad;
-	private static ArrayList<Beca> becas;
+	public static ArrayList<Beca> listaBecas = new ArrayList<Beca>();
 	private boolean isProfesoral;
+	private String nombre;
 
-	public Beca() {
-		this(4, 20, null, null, false);
-	}
-
-	public Beca(float criterio, int cupos, ArrayList<Persona> beneficiarios,
+	public Beca(String nombre, float criterio,
 			HashMap<Facultad, Integer> cuposPorFacultad, boolean isProfesoral) {
 		super();
+		this.nombre = nombre;
 		this.criterio = criterio;
-		this.cupos = cupos;
-		this.beneficiarios = beneficiarios;
 		this.cuposPorFacultad = cuposPorFacultad;
 		this.isProfesoral = isProfesoral;
-		Beca.becas.add(this);
+		this.beneficiarios = new ArrayList<Persona>();
+		this.setBeneficiarios();
+		Beca.listaBecas.add(this);
 
 	}
 
@@ -35,10 +38,12 @@ public class Beca {
 		return result;
 	}
 
-	public void SetBeneficiarios(ArrayList<Persona> beneficiarios) {
+	public void setBeneficiarios() {
 
 		HashMap<Facultad, Integer> cuposCopy = new HashMap<>(cuposPorFacultad);
-
+		Collections.sort(Estudiante.getListaEstudiantes());
+		Collections.sort(Profesor.getListaProfesores());
+		
 		for (Facultad facultad : cuposCopy.keySet()) {
 
 			if (isProfesoral) {
@@ -82,16 +87,13 @@ public class Beca {
 		this.cupos = cupos;
 	}
 
-	public void setBeneficiarios(ArrayList<Persona> beneficiarios) {
-		this.beneficiarios = beneficiarios;
+
+	public static ArrayList<Beca> getListaBecas() {
+		return listaBecas;
 	}
 
-	public static ArrayList<Beca> getBecas() {
-		return becas;
-	}
-
-	public static void setBecas(ArrayList<Beca> becas) {
-		Beca.becas = becas;
+	public static void setListaBecas(ArrayList<Beca> listaBecas) {
+		Beca.listaBecas = listaBecas;
 	}
 
 	public HashMap<Facultad, Integer> getCuposPorFacultad() {
@@ -108,6 +110,14 @@ public class Beca {
 
 	public void setProfesoral(boolean isProfesoral) {
 		this.isProfesoral = isProfesoral;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }

@@ -1,35 +1,44 @@
 package gestorAplicacion.personas;
 
+import java.io.Serializable;
 import java.util.*;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-public class Estudiante extends Persona {
+public class Estudiante extends Persona implements Serializable, Comparable<Estudiante> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private HashMap<Asignatura, Float> asignaturasInscritas;
 	private float promedio;
 	private int semestre;
 	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
+	public static ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
 
-	public Estudiante(HashMap<Asignatura, Float> asignaturasInscritas, float promedio, int semestre,
-			LineasEnfasis lineaEnfasis, java.util.ArrayList<Asignatura> asignaturasAprobadas) {
-
+	public Estudiante(int documento, String nombre, int edad, HashMap<Asignatura, Float> asignaturasInscritas,
+			float promedio, int semestre, LineasEnfasis lineaEnfasis, ArrayList<Asignatura> asignaturasAprobadas) {
+		super(documento, nombre, edad);
 		this.asignaturasInscritas = asignaturasInscritas;
-		this.promedio = promedio;
+		this.promedio = this.calcularPromedio();
 		this.semestre = semestre;
 		this.lineaEnfasis = lineaEnfasis;
 		this.asignaturasAprobadas = asignaturasAprobadas;
+		Estudiante.listaEstudiantes.add(this);
 	}
 
 	public Estudiante() {
-		this(null, 3, 1, null, null);
+		this(10000, "No registra" , 20, new HashMap<Asignatura, Float>() , 4, 1, LineasEnfasis.SISTEMAS, new ArrayList<Asignatura>() );
 	}
-
+	
 	public float calcularPromedio() {
 		float promedio = 0;
 		int creditosInscritos = 0;
-
+		
+		if (this.asignaturasInscritas.size() == 0) { return 3f;} 
+		
 		for (Asignatura informacionAsignatura : asignaturasInscritas.keySet()) {
 
 			float nota = asignaturasInscritas.get(informacionAsignatura);
@@ -51,7 +60,7 @@ public class Estudiante extends Persona {
 	public String posicionSemestre(Estudiante estudiante) {
 		int posEstudiante = 1;
 
-		for (Facultad f : Facultad.getFacultades()) {
+		for (Facultad f : Facultad.getListaFacultades()) {
 			if (f.getEstudiantes().contains(estudiante)) {
 				for (Estudiante e : f.getEstudiantes()) {
 					if (e.getSemestre() == estudiante.getSemestre()) {
@@ -68,7 +77,7 @@ public class Estudiante extends Persona {
 	}
 
 	// Funcionalidad Recomendacion de asignaturas
-	public ArrayList<Asignatura> recomendarAsignaturas() {
+	public ArrayList<Asignatura> RecomendarAsignaturas() {
 		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listaEnfasis = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
@@ -127,4 +136,19 @@ public class Estudiante extends Persona {
 	public void setAsignaturasAprobadas(ArrayList<Asignatura> asignaturasAprobadas) {
 		this.asignaturasAprobadas = asignaturasAprobadas;
 	}
+
+	public static ArrayList<Estudiante> getListaEstudiantes() {
+		return listaEstudiantes;
+	}
+
+	public static void setListaEstudiantes(ArrayList<Estudiante> listaEstudiantes) {
+		Estudiante.listaEstudiantes = listaEstudiantes;
+	}
+
+	@Override
+	public int compareTo(Estudiante o) {
+		return (int) ((o.getPromedio()*1000) - (this.getPromedio()*1000));
+	}
+	
+	
 }
