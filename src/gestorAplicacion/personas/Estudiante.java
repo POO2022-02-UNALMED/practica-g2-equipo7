@@ -77,21 +77,29 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	}
 
 	// Funcionalidad Recomendacion de asignaturas
-	public ArrayList<Asignatura> RecomendarAsignaturas() {
-		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
+	public ArrayList<String> RecomendarAsignaturas() {
+		ArrayList<String> listaRecomendar = new ArrayList<String>();
 		ArrayList<Asignatura> listaEnfasis = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
 
 		for (Asignatura i : listado) {
-			if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i)) {
-				listaEnfasis.add(i);
+			if(lineaEnfasis != null && i.getLineaEnfasis() != null) {
+				if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i) && !asignaturasInscritas.containsKey(i)) {
+					listaEnfasis.add(i);
+				}
 			}
 		}
 
 		for (Asignatura i : listaEnfasis) {
-			if (asignaturasAprobadas.containsAll(i.getPrerrequisitos())) {
-				listaRecomendar.add(i);
+			if(i.getPrerrequisitos()!=null) {
+				if (asignaturasAprobadas.containsAll(i.getPrerrequisitos())) {
+					listaRecomendar.add(i.getNombre());
+				}
 			}
+			
+			else {
+				listaRecomendar.add(i.getNombre());
+				}
 		}
 
 		return listaRecomendar;

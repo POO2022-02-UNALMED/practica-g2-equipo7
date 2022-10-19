@@ -46,10 +46,14 @@ public class Administrador {
 		ArrayList<Asignatura> requisitosEstad2 = new ArrayList<Asignatura>();
 		requisitosEstad2.add(diferencial);
 		requisitosEstad2.add(estad1);
+		
+		estad2.setPrerrequisitos(requisitosEstad2);
 
 		ArrayList<Asignatura> requisitosPOO = new ArrayList<Asignatura>();
 		requisitosPOO.add(discretas);
 		requisitosPOO.add(fundamentosProg);
+		
+		pOO.setPrerrequisitos(requisitosPOO);
 
 		// Declaracion Hashmaps de asignaturas con notas para estudiantes
 		//
@@ -64,13 +68,13 @@ public class Administrador {
 
 		HashMap<Asignatura, Float> asignaturasE3 = new HashMap<Asignatura, Float>();
 		asignaturasE3.put(ingenieriaSoftware, 5f);
-		asignaturasE3.put(sistemasOperativos, 4f);
+		asignaturasE3.put(diferencial, 4f);
 		asignaturasE3.put(pOO, 4.5f);
 
 		HashMap<Asignatura, Float> asignaturasE4 = new HashMap<Asignatura, Float>();
 		asignaturasE4.put(estad1, 3f);
 		asignaturasE4.put(ingenieriaSoftware, 3f);
-		asignaturasE4.put(lineal, 4.5f);
+		asignaturasE4.put(diferencial, 4.5f);
 
 		// Declaracion estudiantes para los tests
 		//
@@ -92,7 +96,7 @@ public class Administrador {
 		Estudiante estudiante4 = new Estudiante(10004, "Rocio", 18, asignaturasE4, 4, 1, LineasEnfasis.SISTEMAS,
 				new ArrayList<Asignatura>());
 		ArrayList<Asignatura> asignaturasE4keys = new ArrayList<Asignatura>(asignaturasE4.keySet());
-		estudiante2.setAsignaturasAprobadas(asignaturasE4keys);
+		estudiante4.setAsignaturasAprobadas(asignaturasE4keys);
 
 		// Declaracion facultades
 		//
@@ -161,6 +165,7 @@ public class Administrador {
 
 	private static void funcionalidad1() {
 		for (Estudiante e : Estudiante.getListaEstudiantes()) {
+			System.out.println(e.getNombre());
 			System.out.println(e.RecomendarAsignaturas());
 		}
 	}
