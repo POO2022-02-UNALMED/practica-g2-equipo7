@@ -18,7 +18,10 @@ public abstract class Persona {
 
 
 	public abstract float calcularPromedio();
+	public abstract Facultad getFacultad();
+	public abstract LineasEnfasis getLineaEnfasis();
 
+	
 	public int getDocumento() {
 		return documento;
 	}

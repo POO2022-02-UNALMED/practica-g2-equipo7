@@ -79,5 +79,8 @@ public class Asignatura implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public void agregarProfesor(Profesor nombre) {
+		this.profesor.add(nombre);
+	}
 
 }

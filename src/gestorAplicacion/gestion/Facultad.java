@@ -19,8 +19,8 @@ public class Facultad implements Serializable{
 
 	public Facultad(String nombre, ArrayList<Profesor> profesoresVinculados, ArrayList<Estudiante> estudiantes) {
 		this.nombre = nombre;
-		this.profesoresVinculados = profesoresVinculados;
-		this.estudiantes = estudiantes;
+		this.setProfesoresVinculados(profesoresVinculados);
+		this.setEstudiantes(estudiantes);
 		listaFacultades.add(this);
 	}
 
@@ -47,6 +47,7 @@ public class Facultad implements Serializable{
 
 	public void setProfesoresVinculados(ArrayList<Profesor> profesoresVinculados) {
 		this.profesoresVinculados = profesoresVinculados;
+		for (Profesor p: profesoresVinculados) {p.setFacultad(this);}
 	}
 
 	public ArrayList<Estudiante> getEstudiantes() {
@@ -54,6 +55,8 @@ public class Facultad implements Serializable{
 	}
 
 	public void setEstudiantes(ArrayList<Estudiante> estudiantes) {
+		for (Estudiante e: estudiantes) {e.setFacultad(this);}
+
 		this.estudiantes = estudiantes;
 	}
 

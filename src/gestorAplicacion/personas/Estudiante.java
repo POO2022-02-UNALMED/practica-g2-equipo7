@@ -16,6 +16,7 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	private int semestre;
 	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
+	private Facultad facultad;
 	public static ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
 
 	public Estudiante(int documento, String nombre, int edad, HashMap<Asignatura, Float> asignaturasInscritas,
@@ -26,7 +27,16 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		this.semestre = semestre;
 		this.lineaEnfasis = lineaEnfasis;
 		this.asignaturasAprobadas = asignaturasAprobadas;
+		this.facultad=null;
 		Estudiante.listaEstudiantes.add(this);
+	}
+
+	public Facultad getFacultad() {
+		return facultad;
+	}
+
+	public void setFacultad(Facultad facultad) {
+		this.facultad = facultad;
 	}
 
 	public Estudiante() {
@@ -152,6 +162,7 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	public static void setListaEstudiantes(ArrayList<Estudiante> listaEstudiantes) {
 		Estudiante.listaEstudiantes = listaEstudiantes;
 	}
+
 
 	@Override
 	public int compareTo(Estudiante o) {

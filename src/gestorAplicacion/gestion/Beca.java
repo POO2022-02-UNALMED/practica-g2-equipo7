@@ -71,9 +71,25 @@ public class Beca implements Serializable{
 		}
 	}
 
+	public int cuposSobrantes() {
+		int total = 0;
+		for (Facultad f: cuposPorFacultad.keySet()) {
+			total+=cuposPorFacultad.get(f);
+		}
+		return total-beneficiarios.size();
+	}
 	public ArrayList<Persona> getBeneficiarios() {
 		return beneficiarios;
 	}
+	
+	public float promedioBeneficiarios() {
+		float total = 0;
+		for (Persona p: beneficiarios) {
+			total+=p.calcularPromedio();
+			}
+		return total/beneficiarios.size();
+	}
+	
 
 	public float getCriterio() {
 		return criterio;
