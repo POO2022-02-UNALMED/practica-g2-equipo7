@@ -86,9 +86,10 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		return "Estudiante no encontrado";
 	}
 
-	// Funcionalidad Recomendacion de asignaturas
-	public ArrayList<String> RecomendarAsignaturas() {
-		ArrayList<String> listaRecomendar = new ArrayList<String>();
+	
+	// Funcionalidad Recomendacion de asignaturas por linea de enfasis
+	public ArrayList<Asignatura> RecomendarAsignaturas() {
+		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listaEnfasis = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
 
@@ -103,18 +104,46 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		for (Asignatura i : listaEnfasis) {
 			if(i.getPrerrequisitos()!=null) {
 				if (asignaturasAprobadas.containsAll(i.getPrerrequisitos())) {
-					listaRecomendar.add(i.getNombre());
+					listaRecomendar.add(i);
 				}
 			}
 			
 			else {
-				listaRecomendar.add(i.getNombre());
+				listaRecomendar.add(i);
 				}
 		}
 
 		return listaRecomendar;
 	}
 
+	// Funcionalidad Recomendacion de asignaturas Basicas
+	public ArrayList<Asignatura> RecomendarAsignaturasBasicas() {
+		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
+		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
+		ArrayList<Asignatura> listadoBasicas = new ArrayList<Asignatura>();
+		
+		for (Asignatura e : listado) {
+			if(e.getLineaEnfasis() == LineasEnfasis.BASICAS  && !asignaturasAprobadas.contains(e) && !asignaturasInscritas.containsKey(e)) {
+				listadoBasicas.add(e);
+			}
+		}
+		
+		for (Asignatura e : listadoBasicas) {
+			if(e.getPrerrequisitos()!=null) {
+				if (asignaturasAprobadas.containsAll(e.getPrerrequisitos())) {
+					listaRecomendar.add(e);
+				}
+			}
+			
+			else {
+				listaRecomendar.add(e);
+			}
+		}
+		
+		return listaRecomendar;
+	}
+	
+	
 	public HashMap<Asignatura, Float> getAsignaturasInscritas() {
 		return asignaturasInscritas;
 	}
@@ -168,6 +197,5 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	public int compareTo(Estudiante o) {
 		return (int) ((o.getPromedio()*1000) - (this.getPromedio()*1000));
 	}
-	
 	
 }

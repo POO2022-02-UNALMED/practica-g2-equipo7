@@ -216,6 +216,7 @@ public class Administrador {
 		ArrayList<Asignatura> asignaturasE10keys = new ArrayList<Asignatura>(asignaturasE10.keySet());
 		estudiante10.setAsignaturasAprobadas(asignaturasE10keys);
 
+		
 		// Declaracion Profesores
 
 		HashMap<Asignatura, Float> asignaturasP1 = new HashMap<Asignatura, Float>();
@@ -276,9 +277,102 @@ public class Administrador {
 		asignaturasP8.put(lineal, 4f);
 		asignaturasP8.put(investigacionOp, 3.7f);
 		Profesor profesor8 = new Profesor(20008, "Mirabel", 0, asignaturasP8, null, null);
-
+		
+		// Declaracion Profesores de Asignaturas
+		ArrayList<Profesor> profesorEstad1 = new ArrayList<Profesor>();
+		profesorEstad1.add(profesor4);
+		profesorEstad1.add(profesor5);
+		profesorEstad1.add(profesor6);
+		estad1.setProfesor(profesorEstad1);
+		
+		ArrayList<Profesor> profesorEstad2 = new ArrayList<Profesor>();
+		profesorEstad2.add(profesor4);
+		profesorEstad2.add(profesor5);
+		estad2.setProfesor(profesorEstad2);
+		
+		ArrayList<Profesor> profesorAnalisisDatos = new ArrayList<Profesor>();
+		profesorAnalisisDatos.add(profesor5);
+		analisisDatos.setProfesor(profesorAnalisisDatos);
+		
+		ArrayList<Profesor> profesorEstadDescriptiva = new ArrayList<Profesor>();
+		profesorEstadDescriptiva.add(profesor5);
+		profesorEstadDescriptiva.add(profesor6);
+		estadDescriptiva.setProfesor(profesorEstadDescriptiva);
+		
+		ArrayList<Profesor> profesorDiferencial = new ArrayList<Profesor>();
+		diferencial.setProfesor(profesorDiferencial);
+		
+		ArrayList<Profesor> profesorFisica1 = new ArrayList<Profesor>();
+		profesorFisica1.add(profesor7);
+		fisica1.setProfesor(profesorFisica1);
+		
+		ArrayList<Profesor> profesorIntroduccion = new ArrayList<Profesor>();
+		introduccion.setProfesor(profesorIntroduccion);
+		
+		ArrayList<Profesor> profesorLineal = new ArrayList<Profesor>();
+		profesorLineal.add(profesor8);
+		profesorLineal.add(profesor3);
+		lineal.setProfesor(profesorLineal);
+		
+		ArrayList<Profesor> profesorInvestigacionOp = new ArrayList<Profesor>();
+		profesorInvestigacionOp.add(profesor8);
+		profesorInvestigacionOp.add(profesor5);
+		investigacionOp.setProfesor(profesorInvestigacionOp);
+		
+		ArrayList<Profesor> profesorFundamentosProg = new ArrayList<Profesor>();
+		profesorFundamentosProg.add(profesor2);
+		profesorFundamentosProg.add(profesor1);
+		fundamentosProg.setProfesor(profesorFundamentosProg);
+		
+		ArrayList<Profesor> profesorSistemasOperativos = new ArrayList<Profesor>();
+		profesorSistemasOperativos.add(profesor3);
+		sistemasOperativos.setProfesor(profesorSistemasOperativos);
+		
+		ArrayList<Profesor> profesorIngenieriaSoftware = new ArrayList<Profesor>();
+		profesorIngenieriaSoftware.add(profesor1);
+		profesorIngenieriaSoftware.add(profesor2);
+		profesorIngenieriaSoftware.add(profesor3);
+		profesorIngenieriaSoftware.add(profesor4);
+		ingenieriaSoftware.setProfesor(profesorIngenieriaSoftware);
+		
+		ArrayList<Profesor> profesorIA = new ArrayList<Profesor>();
+		profesorIA.add(profesor4);
+		profesorIA.add(profesor3);
+		inteligenciaArtificial.setProfesor(profesorIA);
+		
+		ArrayList<Profesor> profesorPOO = new ArrayList<Profesor>();
+		profesorPOO.add(profesor4);
+		pOO.setProfesor(profesorPOO);
+		
+		ArrayList<Profesor> profesorContabilidad = new ArrayList<Profesor>();
+		profesorContabilidad.add(profesor8);
+		contabilidad.setProfesor(profesorContabilidad);
+		
+		ArrayList<Profesor> profesorGestion = new ArrayList<Profesor>();
+		profesorGestion.add(profesor8);
+		gestion.setProfesor(profesorGestion);
+		
+		ArrayList<Profesor> profesorEconometria = new ArrayList<Profesor>();
+		econometria.setProfesor(profesorEconometria);
+		
+		ArrayList<Profesor> profesorDerecho = new ArrayList<Profesor>();
+		derecho.setProfesor(profesorDerecho);
+		
+		ArrayList<Profesor> profesorBioMolecular = new ArrayList<Profesor>();
+		profesorBioMolecular.add(profesor7);
+		profesorBioMolecular.add(profesor6);
+		bioMolecular.setProfesor(profesorBioMolecular);
+		
+		ArrayList<Profesor> profesorBioCelular = new ArrayList<Profesor>();
+		profesorBioCelular.add(profesor7);
+		profesorBioCelular.add(profesor6);
+		bioCelular.setProfesor(profesorBioCelular);
+		
+		ArrayList<Profesor> profesorBioQuimica = new ArrayList<Profesor>();
+		bioquimica.setProfesor(profesorBioQuimica);
+		
 		// Declaracion facultades
-		//
+
 		ArrayList<Estudiante> estudiantesMinas = new ArrayList<Estudiante>(
 				Arrays.asList(estudiante1, estudiante2, estudiante3, estudiante4, estudiante5, estudiante6));
 		ArrayList<Estudiante> estudiantesCiencias = new ArrayList<Estudiante>(
@@ -357,13 +451,265 @@ public class Administrador {
 		return subOpcion;
 	}
 
+	
+	
 	private static void funcionalidad1() {
-		for (Estudiante e : Estudiante.getListaEstudiantes()) {
-			System.out.println(e.getNombre());
-			System.out.println(e.RecomendarAsignaturas());
+		int seleccion = 1;
+
+		do {
+			System.out.println(espaciado);
+			System.out.println("\n--- Menu Recomendar Asignaturas ---\n");
+			if (seleccion != 1) {
+				System.out.println("--- Ingrese una opción valida ---\n");
+			}
+			
+			System.out.println("¿Con cual criterio desea filtrar la recomendacion de asignatura?");
+			System.out.println("1. Asigantura por linea de enfasis");
+			System.out.println("2. Asiganturas basicas");
+			System.out.println("3. Regresar al Inicio");
+			
+			System.out.println("Digite una opción: ");
+			seleccion = (int) readLong();
+			if (seleccion == 3) {
+				return;
+			}
+		} while(seleccion > 3 || seleccion < 1);
+		
+		switch(seleccion) {
+		case 1:
+			int subOpcion = 0;
+			do {
+				System.out.println(espaciado);
+				System.out.println("--- Menu Recomendar Asignaturas ---");
+				System.out.println("Citerio elegido: Linea de enfasis\n");
+				if (subOpcion != 0) {
+					System.out.println("--- Ingrese una opción valida ---\n");
+				}
+				
+				System.out.println("¿Que Recomendacion desea consultar?");
+				System.out.println(" 1. Recomendar asignatura a un estudiante");
+				System.out.println(" 2. Recomendacion de asignatura de todos los estudiantes");
+				System.out.println(" 3. Regresar al Inicio");
+				
+				System.out.println("Digite una opción: ");
+				subOpcion = (int) readLong();
+				if (subOpcion == 3) {
+					System.out.println(espaciado);
+					return;
+				}
+			} while(subOpcion> 3 || subOpcion < 1);
+			
+			switch(subOpcion) {
+			case 1:
+				int subOpcion1 = 0;
+				int documento = 0;
+				Estudiante estudianteConsultado = null;
+				boolean condicional = false;
+				ArrayList<Asignatura> recomendacion = null;
+				
+				do {
+					System.out.println(espaciado);
+					System.out.println("--- Menu Recomendar Asignaturas ---");
+					System.out.println("Citerio elegido: Linea de enfasis");
+					System.out.println("Opcion Elegida: Recomendar al Estudiante\n");
+					
+					System.out.println("-Ingrese el documento del Estudiante.");
+					System.out.println("-Ingrese 0 para salir.");
+					System.out.println("Digite una opción: ");
+
+					documento = (int) readLong();
+					if (documento == 0) {
+						System.out.println(espaciado);
+						return;
+					}
+					for (Estudiante e : Estudiante.getListaEstudiantes()) {
+						if (documento == e.getDocumento()) {
+							condicional = true;
+							estudianteConsultado = e;
+						}
+					}
+					if (condicional == false) {
+						System.out.println("\n--- Documento Invalido ---");
+					}
+					
+					else {
+						recomendacion = estudianteConsultado.RecomendarAsignaturas();
+						if (!recomendacion.isEmpty()) {
+							System.out.println("\nLas asignaturas recomendadas para " + estudianteConsultado.getNombre() + " en su linea de enfasis son:");
+							for(Asignatura i: recomendacion) {
+								System.out.println(i.getNombre());
+							}
+						}
+						else {
+							System.out.println("No hay ninguna asignatura que te recomienda de tu linea de enfasis");
+						}
+					}
+				} while(!condicional);
+				do {
+					if (subOpcion1 != 0) {
+						System.out.println("--- Ingrese una opción valida ---\n");
+					}
+					
+					System.out.println("\n ¿Deseas consultar los profesores de las asignaturas recomendadas?\n");
+					System.out.println("-Ingrese 1 para consultar los profesores");
+					System.out.println("-Ingrese 2 para salir");
+					
+					System.out.println("Digite una opción: ");
+					subOpcion1 = (int) readLong();
+					
+
+					if (subOpcion1 == 2) {
+						int terminacion = terminarPrograma();
+						switch (terminacion) {
+						case 1:
+							System.out.println(espaciado);
+							return;
+						case 0:
+							System.exit(0);
+						}
+					}
+					else {
+						for(Asignatura i: recomendacion) {
+							ArrayList<Profesor> profesores = i.getProfesor();
+							System.out.println("\nLos profesores de " + i.getNombre() + " son:");
+							for(Profesor e: profesores) {
+								System.out.println(e.getNombre());
+							}
+						}
+						
+						System.out.println("");
+						int terminacion = terminarPrograma();
+						switch (terminacion) {
+						case 1:
+							System.out.println(espaciado);
+							return;
+						case 0:
+							System.exit(0);
+						}
+					}
+					
+				} while(subOpcion1> 2 || subOpcion1 < 1);
+			}
+			
+			
+		case 2:
+			int subOpcion2 = 0;
+			do {
+				System.out.println(espaciado);
+				System.out.println("--- Menu Recomendar Asignaturas ---");
+				System.out.println("Citerio elegido: Basicas\n");
+				if (subOpcion2 != 0) {
+					System.out.println("--- Ingrese una opción valida ---\n");
+				}
+				
+				System.out.println("¿Que Recomendacion desea consultar?");
+				System.out.println(" 1. Recomendar asignatura a un estudiante");
+				System.out.println(" 2. Recomendacion de asignatura de todos los estudiantes");
+				System.out.println(" 3. Regresar al Inicio");
+				
+				System.out.println("Digite una opción: ");
+				subOpcion2 = (int) readLong();
+				if (subOpcion2 == 3) {
+					System.out.println(espaciado);
+					return;
+				}
+			} while(subOpcion2> 3 || subOpcion2 < 1);
+			
+			switch(subOpcion2) {
+			case 1:
+				int subOpcion21 = 0;
+				int documento2 = 0;
+				Estudiante estudianteConsultado2 = null;
+				boolean condicional2 = false;
+				ArrayList<Asignatura> recomendacion2 = null;
+				
+				do {
+					System.out.println(espaciado);
+					System.out.println("--- Menu Recomendar Asignaturas ---");
+					System.out.println("Citerio elegido: Basicas");
+					System.out.println("Opcion Elegida: Recomendar al Estudiante\n");
+					
+					System.out.println("-Ingrese el documento del Estudiante.");
+					System.out.println("-Ingrese 0 para salir.");
+					System.out.println("Digite una opción: ");
+
+					documento2 = (int) readLong();
+					if (documento2 == 0) {
+						System.out.println(espaciado);
+						return;
+					}
+					for (Estudiante e : Estudiante.getListaEstudiantes()) {
+						if (documento2 == e.getDocumento()) {
+							condicional2 = true;
+							estudianteConsultado2 = e;
+						}
+					}
+					if (condicional2 == false) {
+						System.out.println("\n--- Documento Invalido ---");
+					}
+					
+					else {
+						recomendacion2 = estudianteConsultado2.RecomendarAsignaturasBasicas();
+						if (!recomendacion2.isEmpty()) {
+							System.out.println("\nLas asignaturas Basicas recomendadas para " + estudianteConsultado2.getNombre() + " son:");
+							for(Asignatura i: recomendacion2) {
+								System.out.println(i.getNombre());
+							}
+						}
+						else {
+							System.out.println("No hay ninguna asignatura Basicas que te recomiende");
+						}
+					}
+				} while(!condicional2);
+				do {
+					if (subOpcion21 != 0) {
+						System.out.println("--- Ingrese una opción valida ---\n");
+					}
+					
+					System.out.println("\n ¿Deseas consultar los profesores de las asignaturas recomendadas?\n");
+					System.out.println("-Ingrese 1 para consultar los profesores");
+					System.out.println("-Ingrese 2 para salir");
+					
+					System.out.println("Digite una opción: ");
+					subOpcion21 = (int) readLong();
+					
+
+					if (subOpcion21 == 2) {
+						int terminacion = terminarPrograma();
+						switch (terminacion) {
+						case 1:
+							System.out.println(espaciado);
+							return;
+						case 0:
+							System.exit(0);
+						}
+					}
+					else {
+						for(Asignatura i: recomendacion2) {
+							ArrayList<Profesor> profesores = i.getProfesor();
+							System.out.println("\nLos profesores de " + i.getNombre() + " son:");
+							for(Profesor e: profesores) {
+								System.out.println(e.getNombre());
+							}
+						}
+						
+						System.out.println("");
+						int terminacion = terminarPrograma();
+						switch (terminacion) {
+						case 1:
+							System.out.println(espaciado);
+							return;
+						case 0:
+							System.exit(0);
+						}
+					}
+					
+				} while(subOpcion21> 2 || subOpcion21 < 1);
+			}
 		}
 	}
 
+	
 	private static void funcionalidad2() {
 		for (Estudiante e : Estudiante.getListaEstudiantes()) {
 			System.out.println(e.posicionSemestre(e));
