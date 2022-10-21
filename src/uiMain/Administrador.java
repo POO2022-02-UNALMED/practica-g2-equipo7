@@ -23,6 +23,8 @@ public class Administrador {
 	public static void main(String args[]) {
 		// Departamento dpto = new Departamento (/' noffbre Archivo '/);
 
+		
+		// NO BORRAR COMENTARIOS
 		// Serializador.DeserializarAsignaturas();
 		// Serializador.DeserializarBecas();
 		// Serializador.DeserializarFacultades();
@@ -128,9 +130,9 @@ public class Administrador {
 
 		HashMap<Asignatura, Float> asignaturasE5 = new HashMap<Asignatura, Float>();
 		asignaturasE5.put(contabilidad, 5f);
-		asignaturasE5.put(diferencial, 4.1f);
+		asignaturasE5.put(diferencial, 5f);
 		asignaturasE5.put(gestion, 4.5f);
-		asignaturasE5.put(lineal, 4f);
+		asignaturasE5.put(lineal, 4.9f);
 
 		HashMap<Asignatura, Float> asignaturasE6 = new HashMap<Asignatura, Float>();
 		asignaturasE6.put(contabilidad, 3.2f);
@@ -148,7 +150,7 @@ public class Administrador {
 		asignaturasE8.put(bioquimica, 4.7f);
 		asignaturasE8.put(diferencial, 5f);
 		asignaturasE8.put(investigacionOp, 4.1f);
-		asignaturasE8.put(lineal, 3.4f);
+		asignaturasE8.put(lineal, 5f);
 		asignaturasE8.put(introduccion, 3f);
 
 		HashMap<Asignatura, Float> asignaturasE9 = new HashMap<Asignatura, Float>();
@@ -232,7 +234,7 @@ public class Administrador {
 		Profesor profesor2 = new Profesor(20002, "Carlos", 0, asignaturasP2, null, null);
 
 		HashMap<Asignatura, Float> asignaturasP3 = new HashMap<Asignatura, Float>();
-		asignaturasP3.put(sistemasOperativos, 4.2f);
+		asignaturasP3.put(sistemasOperativos, 5f);
 		asignaturasP3.put(ingenieriaSoftware, 4.8f);
 		asignaturasP3.put(inteligenciaArtificial, 4f);
 		asignaturasP3.put(lineal, 4.5f);
@@ -259,7 +261,7 @@ public class Administrador {
 
 		HashMap<Asignatura, Float> asignaturasP6 = new HashMap<Asignatura, Float>();
 		asignaturasP6.put(bioMolecular, 4.5f);
-		asignaturasP6.put(bioCelular, 4.4f);
+		asignaturasP6.put(bioCelular, 5f);
 		asignaturasP6.put(estadDescriptiva, 3.8f);
 		asignaturasP6.put(estad1, 3.4f);
 		Profesor profesor6 = new Profesor(20006, "Carlos", 0, asignaturasP6, null, null);
@@ -275,7 +277,7 @@ public class Administrador {
 		asignaturasP8.put(contabilidad, 5f);
 		asignaturasP8.put(gestion, 4.3f);
 		asignaturasP8.put(lineal, 4f);
-		asignaturasP8.put(investigacionOp, 3.7f);
+		asignaturasP8.put(investigacionOp, 5f);
 		Profesor profesor8 = new Profesor(20008, "Mirabel", 0, asignaturasP8, null, null);
 		
 		// Declaracion Profesores de Asignaturas
@@ -388,11 +390,22 @@ public class Administrador {
 		// Declaracion Becas
 
 		HashMap<Facultad, Integer> cuposPorFacultad1 = new HashMap<Facultad, Integer>();
-		cuposPorFacultad1.put(minas, 10);
+		cuposPorFacultad1.put(minas, 5);
 		cuposPorFacultad1.put(ciencias, 2);
+		HashMap<Facultad, Integer> cuposPorFacultad2 = new HashMap<Facultad, Integer>();
+		cuposPorFacultad2.put(minas, 3);
+		cuposPorFacultad2.put(ciencias, 2);
+		HashMap<Facultad, Integer> cuposPorFacultad3 = new HashMap<Facultad, Integer>();
+		cuposPorFacultad3.put(minas, 1);
+		cuposPorFacultad3.put(ciencias, 1);
+		HashMap<Facultad, Integer> cuposPorFacultad4 = new HashMap<Facultad, Integer>();
+		cuposPorFacultad4.put(minas, 6);
+		cuposPorFacultad4.put(ciencias, 3);
 
 		Beca becaEstudiantil1 = new Beca("Componente Excelencia", 4f, cuposPorFacultad1, false);
-		Beca becaEstudiantil2 = new Beca("Profesor excepcional", 4.3f, cuposPorFacultad1, true);
+		Beca becaEstudiantil2 = new Beca("Beca Pedro Nel", 4.5f, cuposPorFacultad2, true);
+		Beca becaEstudiantil3 = new Beca("Estudiante Excepcional", 4.7f, cuposPorFacultad1, false);
+		Beca becaEstudiantil4 = new Beca("Docente Destacado", 4f, cuposPorFacultad1, false);
 
 		Collections.sort(Estudiante.getListaEstudiantes());
 		Collections.sort(Profesor.getListaProfesores());
@@ -552,7 +565,7 @@ public class Administrador {
 					
 					System.out.println("\n ¿Deseas consultar los profesores de las asignaturas recomendadas?\n");
 					System.out.println("-Ingrese 1 para consultar los profesores");
-					System.out.println("-Ingrese 2 para salir");
+					System.out.println("-Ingrese 0 para salir");
 					
 					System.out.println("Digite una opción: ");
 					subOpcion1 = (int) readLong();
@@ -912,7 +925,7 @@ public class Administrador {
 				System.out.println("--- Menu Becas ---");
 				System.out.println("Beca Elegida: " + BecaElegida.getNombre());
 				System.out.println("Opcion Elegida: Ver vinculado elegibles");
-				System.out.println("Filtro : Por facultad " + facultadElegida + "\n");
+				System.out.println("Filtro : Por facultad " + facultadElegida.getNombre() + "\n");
 
 				System.out.println(fmt);
 
@@ -996,6 +1009,12 @@ public class Administrador {
 				}
 
 			case 3:
+
+				System.out.println(espaciado);
+				System.out.println("--- Menu Becas ---");
+				System.out.println("Beca Elegida: " + BecaElegida.getNombre());
+				System.out.println("Opcion Elegida: Ver vinculado elegibles");
+				System.out.println("Filtro : Ninguno \n");
 				fmt = new Formatter();
 				fmt.format("%15s %15s %15s\n", "Nombre vinculado", "Promedio", "Facultad");
 
