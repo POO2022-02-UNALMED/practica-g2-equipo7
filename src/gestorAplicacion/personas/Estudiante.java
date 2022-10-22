@@ -18,16 +18,25 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	private ArrayList<Asignatura> asignaturasAprobadas;
 	private Facultad facultad;
 	public static ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
+	int estrato;
+	float ingresosFamiliares;
+	boolean colegioPublico;
+	int numeroFamiliares;
 
 	public Estudiante(int documento, String nombre, int edad, HashMap<Asignatura, Float> asignaturasInscritas,
-			float promedio, int semestre, LineasEnfasis lineaEnfasis, ArrayList<Asignatura> asignaturasAprobadas) {
+			float promedio, int semestre, LineasEnfasis lineaEnfasis, ArrayList<Asignatura> asignaturasAprobadas,
+			int estrato, float ingresosFamiliares, boolean colegioPublico, int numeroFamiliares) {
 		super(documento, nombre, edad);
 		this.asignaturasInscritas = asignaturasInscritas;
 		this.promedio = this.calcularPromedio();
 		this.semestre = semestre;
 		this.lineaEnfasis = lineaEnfasis;
 		this.asignaturasAprobadas = asignaturasAprobadas;
-		this.facultad=null;
+		this.facultad = null;
+		this.estrato = estrato;
+		this.ingresosFamiliares = ingresosFamiliares;
+		this.colegioPublico = colegioPublico;
+		this.numeroFamiliares = numeroFamiliares;
 		Estudiante.listaEstudiantes.add(this);
 	}
 
@@ -39,16 +48,15 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		this.facultad = facultad;
 	}
 
-	public Estudiante() {
-		this(10000, "No registra" , 20, new HashMap<Asignatura, Float>() , 4, 1, LineasEnfasis.SISTEMAS, new ArrayList<Asignatura>() );
-	}
-	
+
 	public float calcularPromedio() {
 		float promedio = 0;
 		int creditosInscritos = 0;
-		
-		if (this.asignaturasInscritas.size() == 0) { return 3f;} 
-		
+
+		if (this.asignaturasInscritas.size() == 0) {
+			return 3f;
+		}
+
 		for (Asignatura informacionAsignatura : asignaturasInscritas.keySet()) {
 
 			float nota = asignaturasInscritas.get(informacionAsignatura);
@@ -86,7 +94,6 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		return "Estudiante no encontrado";
 	}
 
-	
 	// Funcionalidad Recomendacion de asignaturas por linea de enfasis
 	public ArrayList<Asignatura> RecomendarAsignaturas() {
 		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
@@ -94,23 +101,24 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
 
 		for (Asignatura i : listado) {
-			if(lineaEnfasis != null && i.getLineaEnfasis() != null) {
-				if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i) && !asignaturasInscritas.containsKey(i)) {
+			if (lineaEnfasis != null && i.getLineaEnfasis() != null) {
+				if (i.getLineaEnfasis().equals(lineaEnfasis) && !asignaturasAprobadas.contains(i)
+						&& !asignaturasInscritas.containsKey(i)) {
 					listaEnfasis.add(i);
 				}
 			}
 		}
 
 		for (Asignatura i : listaEnfasis) {
-			if(i.getPrerrequisitos()!=null) {
+			if (i.getPrerrequisitos() != null) {
 				if (asignaturasAprobadas.containsAll(i.getPrerrequisitos())) {
 					listaRecomendar.add(i);
 				}
 			}
-			
+
 			else {
 				listaRecomendar.add(i);
-				}
+			}
 		}
 
 		return listaRecomendar;
@@ -121,29 +129,29 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		ArrayList<Asignatura> listaRecomendar = new ArrayList<Asignatura>();
 		ArrayList<Asignatura> listado = Asignatura.getListaAsignaturas();
 		ArrayList<Asignatura> listadoBasicas = new ArrayList<Asignatura>();
-		
+
 		for (Asignatura e : listado) {
-			if(e.getLineaEnfasis() == LineasEnfasis.BASICAS  && !asignaturasAprobadas.contains(e) && !asignaturasInscritas.containsKey(e)) {
+			if (e.getLineaEnfasis() == LineasEnfasis.BASICAS && !asignaturasAprobadas.contains(e)
+					&& !asignaturasInscritas.containsKey(e)) {
 				listadoBasicas.add(e);
 			}
 		}
-		
+
 		for (Asignatura e : listadoBasicas) {
-			if(e.getPrerrequisitos()!=null) {
+			if (e.getPrerrequisitos() != null) {
 				if (asignaturasAprobadas.containsAll(e.getPrerrequisitos())) {
 					listaRecomendar.add(e);
 				}
 			}
-			
+
 			else {
 				listaRecomendar.add(e);
 			}
 		}
-		
+
 		return listaRecomendar;
 	}
-	
-	
+
 	public HashMap<Asignatura, Float> getAsignaturasInscritas() {
 		return asignaturasInscritas;
 	}
@@ -192,10 +200,41 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		Estudiante.listaEstudiantes = listaEstudiantes;
 	}
 
-
 	@Override
 	public int compareTo(Estudiante o) {
-		return (int) ((o.getPromedio()*1000) - (this.getPromedio()*1000));
+		return (int) ((o.getPromedio() * 1000) - (this.getPromedio() * 1000));
 	}
-	
+
+	public int getEstrato() {
+		return estrato;
+	}
+
+	public void setEstrato(int estrato) {
+		this.estrato = estrato;
+	}
+
+	public float getIngresosFamiliares() {
+		return ingresosFamiliares;
+	}
+
+	public void setIngresosFamiliares(float ingresosFamiliares) {
+		this.ingresosFamiliares = ingresosFamiliares;
+	}
+
+	public boolean isColegioPublico() {
+		return colegioPublico;
+	}
+
+	public void setColegioPublico(boolean colegioPublico) {
+		this.colegioPublico = colegioPublico;
+	}
+
+	public int getNumeroFamiliares() {
+		return numeroFamiliares;
+	}
+
+	public void setNumeroFamiliares(int numeroFamiliares) {
+		this.numeroFamiliares = numeroFamiliares;
+	}
+
 }
