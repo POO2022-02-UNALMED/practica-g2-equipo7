@@ -490,12 +490,12 @@ public class Administrador {
 		
 		switch(seleccion) {
 		case 1:
-			int subOpcion = 0;
+			int subOpcion = 1;
 			do {
 				System.out.println(espaciado);
 				System.out.println("--- Menu Recomendar Asignaturas ---");
 				System.out.println("Citerio elegido: Linea de enfasis\n");
-				if (subOpcion != 0) {
+				if (subOpcion != 1) {
 					System.out.println("--- Ingrese una opción valida ---\n");
 				}
 				
@@ -558,14 +558,16 @@ public class Administrador {
 						}
 					}
 				} while(!condicional);
+				subOpcion1 = 1;
+				
 				do {
-					if (subOpcion1 != 0) {
+					if (subOpcion1 != 1) {
 						System.out.println("--- Ingrese una opción valida ---\n");
 					}
 					
 					System.out.println("\n ¿Deseas consultar los profesores de las asignaturas recomendadas?\n");
 					System.out.println("-Ingrese 1 para consultar los profesores");
-					System.out.println("-Ingrese 0 para salir");
+					System.out.println("-Ingrese 2 para salir");
 					
 					System.out.println("Digite una opción: ");
 					subOpcion1 = (int) readLong();
@@ -581,12 +583,17 @@ public class Administrador {
 							System.exit(0);
 						}
 					}
-					else {
+					else if(subOpcion1 == 1){
 						for(Asignatura i: recomendacion) {
 							ArrayList<Profesor> profesores = i.getProfesor();
-							System.out.println("\nLos profesores de " + i.getNombre() + " son:");
-							for(Profesor e: profesores) {
-								System.out.println(e.getNombre());
+							if(!profesores.isEmpty()) {
+								System.out.println("\nLos profesores de " + i.getNombre() + " son:");
+								for(Profesor e: profesores) {
+									System.out.println(e.getNombre());
+								}
+							}
+							else {
+								System.out.println("\n-Actualmente no hay ningun profesor que dicte " + i.getNombre());
 							}
 						}
 						
@@ -602,6 +609,34 @@ public class Administrador {
 					}
 					
 				} while(subOpcion1> 2 || subOpcion1 < 1);
+			case 2:
+				System.out.println(espaciado);
+				System.out.println("--- Menu Recomendar Asignaturas ---");
+				System.out.println("Citerio elegido: Linea de enfasis");
+				System.out.println("Opcion Elegida: Recomendar al Estudiante\n");
+				
+				Formatter fmt = new Formatter();
+				fmt.format("%-20s %s\n", "Nombre Estudiante", "Asignaturas Recomendadas");
+				fmt.format("%s\n","----------------------------------------------------------------");
+				
+				for(Estudiante e: Estudiante.getListaEstudiantes()) {
+					ArrayList<String> listadoRecomendar = new ArrayList<String>();
+					for(Asignatura i: e.RecomendarAsignaturas()) {
+						listadoRecomendar.add(i.getNombre());
+					}
+					String lista = String.join(", ", listadoRecomendar);
+					fmt.format("%-20s %s\n", e.getNombre(), lista);
+				}
+				System.out.println(fmt);
+				
+				int terminacion = terminarPrograma();
+				switch (terminacion) {
+				case 1:
+					System.out.println(espaciado);
+					return;
+				case 0:
+					System.exit(0);
+				}
 			}
 			
 			
@@ -674,8 +709,9 @@ public class Administrador {
 						}
 					}
 				} while(!condicional2);
+				subOpcion21 = 1;
 				do {
-					if (subOpcion21 != 0) {
+					if (subOpcion21 != 1) {
 						System.out.println("--- Ingrese una opción valida ---\n");
 					}
 					
@@ -697,12 +733,17 @@ public class Administrador {
 							System.exit(0);
 						}
 					}
-					else {
+					else if(subOpcion21 == 1){
 						for(Asignatura i: recomendacion2) {
 							ArrayList<Profesor> profesores = i.getProfesor();
-							System.out.println("\nLos profesores de " + i.getNombre() + " son:");
-							for(Profesor e: profesores) {
-								System.out.println(e.getNombre());
+							if(!profesores.isEmpty()) {
+								System.out.println("\nLos profesores de " + i.getNombre() + " son:");
+								for(Profesor e: profesores) {
+									System.out.println(e.getNombre());
+								}
+							}
+							else {
+								System.out.println("\n-Actualmente no hay ningun profesor que dicte " + i.getNombre());
 							}
 						}
 						
@@ -718,6 +759,34 @@ public class Administrador {
 					}
 					
 				} while(subOpcion21> 2 || subOpcion21 < 1);
+			case 2:
+				System.out.println(espaciado);
+				System.out.println("--- Menu Recomendar Asignaturas ---");
+				System.out.println("Citerio elegido: Basicas");
+				System.out.println("Opcion Elegida: Recomendar al Estudiante\n");
+				
+				Formatter fmt = new Formatter();
+				fmt.format("%-20s %s\n", "Nombre Estudiante", "Asignaturas Recomendadas");
+				fmt.format("%s\n","----------------------------------------------------------------");
+
+				for(Estudiante e: Estudiante.getListaEstudiantes()) {
+					ArrayList<String> listadoRecomendar = new ArrayList<String>();
+					for(Asignatura i: e.RecomendarAsignaturasBasicas()) {
+						listadoRecomendar.add(i.getNombre());
+					}
+					String lista = String.join(", ", listadoRecomendar);
+					fmt.format("%-20s %s\n", e.getNombre(), lista);
+				}
+				System.out.println(fmt);
+				
+				int terminacion = terminarPrograma();
+				switch (terminacion) {
+				case 1:
+					System.out.println(espaciado);
+					return;
+				case 0:
+					System.exit(0);
+				}
 			}
 		}
 	}
