@@ -724,8 +724,169 @@ public class Administrador {
 
 	
 	private static void funcionalidad2() {
-		for (Estudiante e : Estudiante.getListaEstudiantes()) {
-			System.out.println(e.posicionSemestre(e));
+		// Funcionalidad Calidad de estudiantes
+		int seleccion = 1;
+
+		do {
+			System.out.println(espaciado);
+			System.out.println("\n--- Menu Calidad de Estudiante ---\n");
+			if (seleccion != 1) {
+				System.out.println("--- Ingrese una opción valida ---\n");
+			}
+
+			System.out.println("¿Que información desea obtener acerca del estudiante?");
+			System.out.println("1. Consultar la calidad de un estudiante por documento");
+			System.out.println("2. Consultar la calidad de los estudiantes inscritos a una facultad");
+			System.out.println("3. Consultar la calidad de los estudiantes inscritos a una linea de enfasis");
+			System.out.println("4. Regresar al Inicio");
+
+			System.out.println("Digite una opción: ");
+			seleccion = (int) readLong();
+			if (seleccion == 4) {
+				return;
+			}
+
+		} while (seleccion > 4 || seleccion < 1);
+
+		switch (seleccion){
+			case 1:
+				int documento = 0;
+				Estudiante estudianteConsultado = null;
+				boolean estudianteExiste = false;
+
+				do {
+					System.out.println(espaciado);
+					System.out.println("--- Menu Calidad de Estudiante ---");
+					System.out.println("Opcion Elegida: Consultar la calidad de un estudiante por documento\n");
+
+					System.out.println("-Ingrese el documento del Estudiante.");
+					System.out.println("-Ingrese 0 para salir.");
+					System.out.println("Digite una opción: ");
+
+					documento = (int) readLong();
+					if (documento == 0) {
+						System.out.println(espaciado);
+						return;
+					}
+					for (Estudiante e : Estudiante.getListaEstudiantes()) {
+						if (documento == e.getDocumento()) {
+							estudianteExiste = true;
+							estudianteConsultado = e;
+						}
+					}
+					if (estudianteExiste == false) {
+						System.out.println("\n--- Documento Invalido ---");
+					} else {
+						System.out.println("\nEl estudiante con el documento "+ documento + " tiene una calidad " + estudianteConsultado.calidadEstudiante());
+						System.out.println("");
+						int terminacion = terminarPrograma();
+						switch (terminacion) {
+						case 1:
+							System.out.println(espaciado);
+							return;
+						case 0:
+							System.exit(0);
+						}
+					}
+				} while(!estudianteExiste);
+
+			case 2:
+				int subOpcion = 0;
+				do {
+					System.out.println(espaciado);
+					System.out.println("--- Menu Calidad de Estudiante ---");
+					System.out.println("Opcion Elegida: Consultar la calidad de los estudiantes inscritos a una facultad\n");
+
+					int contador = 1;
+
+					System.out.println("-Seleccione la facultad de la que desea obtener información.");
+					for (Facultad facultad : Facultad.getListaFacultades()){
+						System.out.println(contador + ". " + facultad.getNombre());
+						contador++;
+					}
+					System.out.println(contador + ". Regresar al Inicio");
+
+					System.out.println("Digite una opción: ");
+					subOpcion = (int) readLong();
+					if (subOpcion == contador) {
+						return;
+					}
+				}   while (subOpcion > Facultad.getListaFacultades().size() + 1 || subOpcion < 1);
+
+				Facultad facultadElegida = Facultad.getListaFacultades().get(subOpcion - 1);
+
+				Formatter fmt = new Formatter();
+				fmt.format("%15s %15s %15s\n", "Nombre", "Calidad", "Facultad");
+				for (Estudiante e : facultadElegida.getEstudiantes()){
+					fmt.format("%14s %14s %17s\n", e.getNombre(), e.calidadEstudiante(),
+							facultadElegida.getNombre());
+				}
+				System.out.println(espaciado);
+				System.out.println("--- Menu Calidad de Estudiante ---");
+				System.out.println("Opcion Elegida: Consultar la calidad de los estudiantes inscritos a una facultad");
+				System.out.println("Facultad Elegida: " + facultadElegida.getNombre() + "\n");
+
+				System.out.println(fmt);
+				int terminacion = terminarPrograma();
+				switch (terminacion) {
+					case 1:
+						System.out.println(espaciado);
+						return;
+					case 0:
+						System.exit(0);
+				}
+
+			case 3:
+				int subOpcion1 = 0;
+				do {
+					System.out.println(espaciado);
+					System.out.println("--- Menu Calidad de Estudiante ---");
+					System.out.println("Opcion Elegida: Consultar la calidad de los estudiantes inscritos a una linea de enfasis\n");
+
+					int contador = 1;
+
+					System.out.println("-Seleccione la linea de enfasis de la que desea obtener información.");
+					for (LineasEnfasis le : LineasEnfasis.values()){
+						System.out.println(contador + ". " + le);
+						contador++;
+					}
+					System.out.println(contador + ". Regresar al Inicio");
+
+					System.out.println("Digite una opción: ");
+					subOpcion1 = (int) readLong();
+					if (subOpcion1 == contador) {
+						return;
+					}
+				}  while (subOpcion1 > LineasEnfasis.values().length || subOpcion1 < 0);
+
+				LineasEnfasis lineaElegida = LineasEnfasis.values()[subOpcion1 - 1];
+
+				fmt = new Formatter();
+				fmt.format("%15s %15s %15s\n", "Nombre", "Calidad", "Facultad");
+
+				for (Estudiante e : Estudiante.getListaEstudiantes()){
+					if(e.getLineaEnfasis().equals(lineaElegida)){
+						fmt.format("%14s %14s %17s\n", e.getNombre(), e.calidadEstudiante(),
+							lineaElegida.toString());
+					}
+				}
+
+
+
+				System.out.println(espaciado);
+				System.out.println("--- Menu Calidad de Estudiante ---");
+				System.out.println("Opcion Elegida: Consultar la calidad de los estudiantes inscritos a una facultad");
+				System.out.println("Linea de Enfasis Elegida: " + lineaElegida.toString() + "\n");
+
+				System.out.println(fmt);
+				terminacion = terminarPrograma();
+				switch (terminacion) {
+					case 1:
+						System.out.println(espaciado);
+						return;
+					case 0:
+						System.exit(0);
+				}
 		}
 	}
 
