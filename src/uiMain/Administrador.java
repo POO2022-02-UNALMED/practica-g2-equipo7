@@ -429,7 +429,7 @@ public class Administrador {
 			System.out.println(" 2. Calidad Estudiante");
 			System.out.println(" 3. Información de Becas");
 			System.out.println(" 4. Informacion de Subsidios Estudiantiles");
-			System.out.println(" 5.");
+			System.out.println(" 5. Consultar posición de un estudiante");
 			System.out.println(" 6. Salir del Sistema");
 			System.out.print("Teclee opcion: ");
 			opcion = (int) readLong();
@@ -1537,6 +1537,87 @@ public class Administrador {
 	}
 
 	private static void funcionalidad5() {
+		// Funcionalidad Posición de estudiantes
+		int seleccion = 1;
 
+		do {
+			System.out.println(espaciado);
+			System.out.println("--- Menu Posición de Estudiante ---");
+
+			if (seleccion != 1) {
+				System.out.println("--- Ingrese una opción valida ---\n");
+			}
+
+			System.out.println("Seleccione una opción");
+			System.out.println("1. Ingresar el documento del Estudiante.");
+			System.out.println("2. Regresar al Inicio.");
+			System.out.print("Digite una opción: ");
+
+			seleccion = (int) readLong();
+
+			if (seleccion == 2) {
+				System.out.println(espaciado);
+				return;
+			}
+			else if (seleccion == 1) {
+				System.out.print("Ingrese el documento del Estudiante: ");
+				int documento = (int) readLong();
+				Estudiante estudianteConsultado = null;
+
+				for (Estudiante e : Estudiante.getListaEstudiantes()) {
+					if (documento == e.getDocumento()) {
+						estudianteConsultado = e;
+					}
+				}
+
+				if(estudianteConsultado == null){
+					System.out.println("Documento no encontrado");
+					funcionalidad5();
+				}
+
+				else {
+					int seleccion2 = 1;
+
+					do {
+						System.out.println(espaciado);
+						System.out.println("\n--- Menu Posición de Estudiante ---\n");
+						System.out.println("Documento válido\n");
+						System.out.println(estudianteConsultado + "\n");
+						if (seleccion2 != 1) {
+							System.out.println("--- Ingrese una opción valida ---\n");
+						}
+
+						System.out.println("¿Que información desea obtener acerca del estudiante?");
+						System.out.println("1. Consultar la posición del estudiante en su semestre");
+						System.out.println("2. Consultar la posición del estudiante en su facultad");
+						System.out.println("3. Consultar la posición del estudiante en su línea de enfasis");
+						System.out.println("4. Regresar al Inicio");
+
+						System.out.print("Digite una opción: ");
+						seleccion2 = (int) readLong();
+						if (seleccion2 == 4) {
+							return;
+						}
+
+					} while (seleccion2 > 4 || seleccion2 < 1);
+
+					switch (seleccion2){
+						case 1:
+							System.out.println('\n' + Estudiante.posicionEstudiante(estudianteConsultado, "semestre"));
+							break;
+
+						case 2:
+							System.out.println('\n' + Estudiante.posicionEstudiante(estudianteConsultado, "facultad"));
+							break;
+
+						case 3:
+							System.out.println('\n' + Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis"));
+							break;
+					}
+
+					funcionalidad5();
+				}
+			}
+		} while (seleccion > 2 || seleccion < 1);
 	}
 }

@@ -74,24 +74,56 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		return CalidadEstudiante.ObtenerCalidadEstudiante(this.promedio);
 	}
 
-	// Funcionalidad posición en el semestre
-	public String posicionSemestre(Estudiante estudiante) {
+	// Funcionalidad posición de estudiante
+	public static String posicionEstudiante(Estudiante estudiante, String Dominio) {
 		int posEstudiante = 1;
 
-		for (Facultad f : Facultad.getListaFacultades()) {
-			if (f.getEstudiantes().contains(estudiante)) {
-				for (Estudiante e : f.getEstudiantes()) {
+		switch (Dominio) {
+
+			case "semestre":
+				for (Estudiante e : Estudiante.getListaEstudiantes()) {
 					if (e.getSemestre() == estudiante.getSemestre()) {
 						if (e.getPromedio() > estudiante.getPromedio()) {
 							posEstudiante += 1;
 						}
 					}
+					return "Posición " + posEstudiante +
+							" entre estudiantes del semestre " + estudiante.getSemestre();
 				}
-				return "Posición " + posEstudiante + " entre estudiantes del semestre " + estudiante.getSemestre()
-						+ " de la facultad " + f.getNombre();
-			}
+
+			case "facultad":
+				for (Facultad f : Facultad.getListaFacultades()) {
+					if (f.getEstudiantes().contains(estudiante)) {
+						for (Estudiante e : f.getEstudiantes()) {
+							if (e.getPromedio() > estudiante.getPromedio()) {
+								posEstudiante += 1;
+							}
+						}
+						return "Posición " + posEstudiante +
+								" entre estudiantes de la facultad " + f.getNombre();
+					}
+				}
+				return "El estudiante no pertenece a ninguna facultad";
+
+			case "lineaEnfasis":
+				for (Facultad f : Facultad.getListaFacultades()) {
+					if (f.getEstudiantes().contains(estudiante)) {
+						for (Estudiante e : f.getEstudiantes()) {
+							if (e.getLineaEnfasis() == estudiante.getLineaEnfasis()) {
+								if (e.getPromedio() > estudiante.getPromedio()) {
+									posEstudiante += 1;
+								}
+							}
+						}
+						return "Posición " + posEstudiante +
+								" entre estudiantes de la línea de enfásis " + estudiante.getLineaEnfasis();
+					}
+				}
+				return "El estudiante no pertenece a ninguna línea de enfásis";
+
+			default:
+				return "Ingrese un rango de busqueda válido";
 		}
-		return "Estudiante no encontrado";
 	}
 
 	// Funcionalidad Recomendacion de asignaturas por linea de enfasis
@@ -237,4 +269,12 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		this.numeroFamiliares = numeroFamiliares;
 	}
 
+	@Override
+	public String toString() {
+		return "Nombre del estudiante: " + this.getNombre() +
+				"\nPromedio: " + this.promedio +
+				"\nSemestre: " + this.semestre +
+				"\nLínea de Enfásis: " + this.lineaEnfasis +
+				"\nFacultad: " + this.facultad.getNombre();
+	}
 }
