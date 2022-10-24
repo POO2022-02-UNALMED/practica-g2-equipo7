@@ -167,17 +167,17 @@ public class Administrador {
 
 		// Declaracion estudiantes para los tests
 		//
-		Estudiante estudiante1 = new Estudiante(10001, "Juan camilo", 20, asignaturasE1, 4, 1, LineasEnfasis.SISTEMAS,
+		Estudiante estudiante1 = new Estudiante(10001, "Juan camilo", 20, asignaturasE1, 5, 1, LineasEnfasis.SISTEMAS,
 				new ArrayList<Asignatura>(), 3, 890000, false, 1);
 		ArrayList<Asignatura> asignaturasE1keys = new ArrayList<Asignatura>(asignaturasE1.keySet());
 		estudiante1.setAsignaturasAprobadas(asignaturasE1keys);
 
-		Estudiante estudiante2 = new Estudiante(10002, "Juan Diego", 20, asignaturasE2, 4, 1, LineasEnfasis.SISTEMAS,
+		Estudiante estudiante2 = new Estudiante(10002, "Juan Diego", 20, asignaturasE2, 3, 1, LineasEnfasis.SISTEMAS,
 				new ArrayList<Asignatura>(), 4, 2880000, true, 4);
 		ArrayList<Asignatura> asignaturasE2keys = new ArrayList<Asignatura>(asignaturasE2.keySet());
 		estudiante2.setAsignaturasAprobadas(asignaturasE2keys);
 
-		Estudiante estudiante3 = new Estudiante(10003, "Andres", 21, asignaturasE3, 4, 1, LineasEnfasis.SISTEMAS,
+		Estudiante estudiante3 = new Estudiante(10003, "Andres", 21, asignaturasE3, 5, 1, LineasEnfasis.SISTEMAS,
 				new ArrayList<Asignatura>(), 2, 3000000, true, 5);
 		ArrayList<Asignatura> asignaturasE3keys = new ArrayList<Asignatura>(asignaturasE3.keySet());
 		estudiante3.setAsignaturasAprobadas(asignaturasE3keys);
@@ -202,7 +202,7 @@ public class Administrador {
 		ArrayList<Asignatura> asignaturasE7keys = new ArrayList<Asignatura>(asignaturasE7.keySet());
 		estudiante7.setAsignaturasAprobadas(asignaturasE7keys);
 
-		Estudiante estudiante8 = new Estudiante(10008, "William", 18, asignaturasE8, 4, 1, LineasEnfasis.BIOLOGIA,
+		Estudiante estudiante8 = new Estudiante(10008, "William", 18, asignaturasE8, 2, 1, LineasEnfasis.BIOLOGIA,
 				new ArrayList<Asignatura>(), 5, 10700000, false, 3);
 		ArrayList<Asignatura> asignaturasE8keys = new ArrayList<Asignatura>(asignaturasE8.keySet());
 		estudiante8.setAsignaturasAprobadas(asignaturasE8keys);
@@ -430,7 +430,8 @@ public class Administrador {
 			System.out.println(" 3. Información de Becas");
 			System.out.println(" 4. Informacion de Subsidios Estudiantiles");
 			System.out.println(" 5. Consultar posición de un estudiante");
-			System.out.println(" 6. Salir del Sistema");
+			System.out.println(" 6. Consultar vinculados");
+			System.out.println(" 7. Salir del Sistema");
 			System.out.print("Teclee opcion: ");
 			opcion = (int) readLong();
 
@@ -451,6 +452,9 @@ public class Administrador {
 				funcionalidad5();
 				break;
 			case 6:
+				funcionalidad6();
+				break;
+			case 7:
 				Serializador.SerializarAsignaturas();
 				Serializador.SerializarBecas();
 				Serializador.SerializarFacultades();
@@ -459,7 +463,7 @@ public class Administrador {
 				System.exit(0);
 				break;
 			}
-		} while (opcion != 6);
+		} while (opcion != 7);
 	}
 
 	private static int terminarPrograma() {
@@ -1685,5 +1689,54 @@ public class Administrador {
 				}
 			}
 		} while (seleccion > 2 || seleccion < 1);
+	}
+
+	private static void funcionalidad6(){
+		int seleccion = 1;
+
+		do {
+			System.out.println(espaciado);
+			System.out.println("\n--- Menu Consulta vinculados ---\n");
+
+			if (seleccion != 1) {
+				System.out.println("--- Ingrese una opción valida ---\n");
+			}
+
+			System.out.println("¿Que información desea obtener acerca del estudiante?");
+			System.out.println("1. Consultar los estudiantes vinculados");
+			System.out.println("2. Consultar los profesores vinculados");
+			System.out.println("3. Consultar todos los vinculados");
+			System.out.println("4. Regresar al Inicio");
+
+			System.out.println("Digite una opción: ");
+			seleccion = (int) readLong();
+			if (seleccion == 4) {
+				return;
+			}
+
+		} while (seleccion > 4 || seleccion < 1);
+
+		switch (seleccion) {
+			case 1:
+				System.out.println(espaciado);
+				System.out.println(Estudiante.vistaGeneralEstudiantes());
+				break;
+
+			case 2:
+				System.out.println("case 2");
+				break;
+
+			case 3:
+				System.out.println("case 3");
+				break;
+		}
+		int terminacion = terminarPrograma();
+		switch (terminacion) {
+			case 1:
+				System.out.println(espaciado);
+				return;
+			case 0:
+				System.exit(0);
+		}
 	}
 }

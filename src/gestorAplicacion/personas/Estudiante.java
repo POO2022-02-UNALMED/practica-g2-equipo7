@@ -184,6 +184,18 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		return listaRecomendar;
 	}
 
+	public static String vistaGeneralEstudiantes(){
+		StringBuilder vista = new StringBuilder("Nombre\tDocumento\tCalidad\tPosSemestre\tPosFacultad\n");
+		for (Estudiante e: listaEstudiantes) {
+			vista.append(e.getNombre() + '\t' +
+					e.getDocumento() + '\t' +
+					e.calidadEstudiante() + '\t' +
+					posicionEstudiante(e, "semestre")+ '\t' +
+					posicionEstudiante(e,"facultad") + '\n');
+		}
+		return vista.toString();
+	}
+
 	public HashMap<Asignatura, Float> getAsignaturasInscritas() {
 		return asignaturasInscritas;
 	}
