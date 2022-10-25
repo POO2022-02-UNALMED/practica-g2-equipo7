@@ -27,4 +27,25 @@ Podemos Resumir el funcionamiento con el siguiente modelo de secuencia.
 
 Podemos observar una vista en la consola de este resultado.
 
-![CAPTURA_1](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/secuencia1.png)
+![CAPTURA_1](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/ra_le_eu.png)
+
+## También podemos observar como relacionamos esto con la clase profesor ya que seleccionar la opción uno podemos observar los nombres de los profesores encargados de dictar esa materia.
+
+![CAPTURA_2](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/profesores.png)
+
+## Por otro lado, al realizarlo para todos los estudiantes obtenemos lo siguiente.
+
+![CAPTURA_3](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/todos_le.png)
+
+## Podemos observar algo similar para la opción de asignaturas básicas. Recomendación por estudiante.
+
+![CAPTURA_4](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_es.png)
+
+## También podemos ver los profesores de estas asignaturas.
+
+![CAPTURA_5](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/profesores_bas.png)
+
+## También podemos visualizar todas las asignaturas basicas recomendadas para los estudiantes
+
+![CAPTURA_6](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_te.png)
+
