@@ -21,4 +21,10 @@ La variable “espaciado” la cual se encuentra en el paquete uiMain en la clas
 Podemos Resumir el funcionamiento con el siguiente modelo de secuencia.
 
 
-![Menu de la aplicacion](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/secuencia1.png)
+![DIAGRAMA_SECUENCIA_1](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/secuencia1.png)
+
+## Podemos observar una vista en la consola de este resultado.
+
+Podemos observar una vista en la consola de este resultado.
+
+![CAPTURA_1](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/secuencia1.png)
