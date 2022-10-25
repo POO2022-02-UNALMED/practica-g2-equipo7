@@ -39,7 +39,7 @@ Podemos observar una vista en la consola de este resultado.
 
 ## Podemos observar algo similar para la opción de asignaturas básicas. Recomendación por estudiante.
 
-![CAPTURA_4](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_es.png)
+![CAPTURA_4](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basica_es.png)
 
 ## También podemos ver los profesores de estas asignaturas.
 
