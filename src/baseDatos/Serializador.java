@@ -28,7 +28,7 @@ public class Serializador implements Serializable {
 		// Serializar
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\tmp\\Asigaturas.txt");
+			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\src\\baseDatos\\tmp\\Asignaturas.txt");
 
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
@@ -49,7 +49,7 @@ public class Serializador implements Serializable {
 
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream(System.getProperty("user.dir") + "/tmp/Asignaturas.txt");
+			fileIn = new FileInputStream(System.getProperty("user.dir") + "/src/baseDatos/tmp/Asignaturas.txt");
 
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 
@@ -76,7 +76,7 @@ public class Serializador implements Serializable {
 		// Serializar
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\tmp\\Becas.txt");
+			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\src\\baseDatos\\tmp\\Becas.txt");
 
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
@@ -97,7 +97,7 @@ public class Serializador implements Serializable {
 
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream(System.getProperty("user.dir") + "/tmp/Becas.txt");
+			fileIn = new FileInputStream(System.getProperty("user.dir") + "/src/baseDatos/tmp/Becas.txt");
 
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 
@@ -123,7 +123,7 @@ public class Serializador implements Serializable {
 		// Serializar
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\tmp\\Facultades.txt");
+			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\src\\baseDatos\\tmp\\Facultades.txt");
 
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
@@ -144,7 +144,7 @@ public class Serializador implements Serializable {
 
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream(System.getProperty("user.dir") + "/tmp/Facultades.txt");
+			fileIn = new FileInputStream(System.getProperty("user.dir") + "/src/baseDatos/tmp/Facultades.txt");
 
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 
@@ -170,7 +170,7 @@ public class Serializador implements Serializable {
 		// Serializar
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\tmp\\Estudiantes.txt");
+			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\src\\baseDatos\\tmp\\Estudiantes.txt");
 
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
@@ -192,7 +192,7 @@ public class Serializador implements Serializable {
 
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream(System.getProperty("user.dir") + "/tmp/Estudiantes.txt");
+			fileIn = new FileInputStream(System.getProperty("user.dir") + "/src/baseDatos/tmp/Estudiantes.txt");
 
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 
@@ -218,7 +218,7 @@ public class Serializador implements Serializable {
 		// Serializar
 		FileOutputStream fileOut;
 		try {
-			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\tmp\\Profesores.txt");
+			fileOut = new FileOutputStream(System.getProperty("user.dir") + "\\src\\baseDatos\\tmp\\Profesores.txt");
 
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 
@@ -239,7 +239,7 @@ public class Serializador implements Serializable {
 
 		FileInputStream fileIn;
 		try {
-			fileIn = new FileInputStream(System.getProperty("user.dir") + "/tmp/Profesores.txt");
+			fileIn = new FileInputStream(System.getProperty("user.dir") + "/src/baseDatos/tmp/Profesores.txt");
 
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 

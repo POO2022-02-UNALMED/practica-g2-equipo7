@@ -1,10 +1,11 @@
 package gestorAplicacion.personas;
 
+import java.io.Serializable;
 import java.util.*;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable {
 	private int documento;
 	private String nombre;
 	private int edad;
