@@ -52,16 +52,18 @@ Podemos observar una vista en la consola de este resultado.
 •	Calidad de estudiante: Esta funcionalidad nos muestra la calidad de estudiante, y puede filtrarse individualmente para lo que se necesitara la identificación del mismo, de igual forma, también puede hacerse el filtrado por facultad y línea de énfasis. Relacionando a las clases “Facultad.java”, “Estudiante.java” y el enumerado de línea de énfasis.
 Podemos observar el funcionamiento con el diagrama de secuencias siguiente:
 
-![SECUENCIA_2](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_te.png) 
+![SECUENCIA_2](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/secuencia2.png) 
+
+![caputura6.1](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/calidad_estudia.png) 
 
 Consulta por documento.
 
- ![CAPTURA_6](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_te.png)
+ ![CAPTURA_7](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/ce_individual.png)
 
 Consulta por facultad me filtra por las facultades en la base de datos y finalmente me presenta una tabla con los valores requeridos.
 
-![CAPTURA_6](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_te.png)
+![CAPTURA_6](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/ce_facultad.png)
 
 Consulta por línea de énfasis, filtrando por línea de énfasis y mostrando una tabla al final.
 
-![CAPTURA_6](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/basicas_te.png)
+![CAPTURA_6](https://github.com/POO2022-02-UNALMED/practica-g2-equipo7/blob/master/lib/ce_linea_enfasis.png)
