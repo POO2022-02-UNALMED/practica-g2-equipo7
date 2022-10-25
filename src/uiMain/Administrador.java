@@ -217,18 +217,6 @@ public class Administrador {
 		ArrayList<Asignatura> asignaturasE10keys = new ArrayList<Asignatura>(asignaturasE10.keySet());
 		estudiante10.setAsignaturasAprobadas(asignaturasE10keys);
 
-		for (Estudiante e : Estudiante.getListaEstudiantes()) {
-			System.out.println(e.getNombre());
-			System.out.println(Subsidio.calcularIES(e));
-		}
-
-		Subsidio.sortByIES();
-		System.out.println("----------");
-		for (Estudiante e : Estudiante.getListaEstudiantes()) {
-			System.out.println(e.getNombre());
-			System.out.println(Subsidio.calcularIES(e));
-		}
-
 		// Declaracion Profesores
 
 		HashMap<Asignatura, Float> asignaturasP1 = new HashMap<Asignatura, Float>();
@@ -1721,16 +1709,15 @@ public class Administrador {
 			System.out.println("¿Que información desea obtener acerca del estudiante?");
 			System.out.println("1. Consultar los estudiantes vinculados");
 			System.out.println("2. Consultar los profesores vinculados");
-			System.out.println("3. Consultar todos los vinculados");
-			System.out.println("4. Regresar al Inicio");
+			System.out.println("3. Regresar al Inicio");
 
 			System.out.println("Digite una opción: ");
 			seleccion = (int) readLong();
-			if (seleccion == 4) {
+			if (seleccion == 3) {
 				return;
 			}
 
-		} while (seleccion > 4 || seleccion < 1);
+		} while (seleccion > 3 || seleccion < 1);
 
 		switch (seleccion) {
 			case 1:
@@ -1739,11 +1726,8 @@ public class Administrador {
 				break;
 
 			case 2:
-				System.out.println("case 2");
-				break;
-
-			case 3:
-				System.out.println("case 3");
+				System.out.println(espaciado);
+				Profesor.vistaGeneralProfesores();
 				break;
 		}
 		int terminacion = terminarPrograma();

@@ -45,6 +45,42 @@ public class Profesor extends Persona implements Serializable, Comparable<Profes
 		}
 	}
 
+	public static void vistaGeneralProfesores(){
+		System.out.print("--------------------------------------------------");
+		System.out.println("-----------------------------------------------------");
+		System.out.printf("%15s %15s %20s %30s %18s",
+				"NOMBRE", "DOCUMENTO", "BECA", "PROMEDIOASIGNATURASDICTADAS","FECHAINGRESO");
+		System.out.print("\n--------------------------------------------------");
+		System.out.println("-----------------------------------------------------");
+		for (Profesor p: listaProfesores) {
+			String beca = "No aplica";
+			String subsidio = "No aplica";
+			String fechaInicio = p.getFechaIngreso() == null ? "No adjudicada" : p.getFechaIngreso().toString();
+
+			for(Beca b: Beca.getListaBecas()) {
+				if (b.getBeneficiarios().contains(p)) {
+					beca = b.getNombre();
+					break;
+				}
+			}
+			for(Subsidio s: Subsidio.getListaSubsidio()){
+				if(s.getBeneficiarios().contains(p)){
+					subsidio = s.getNombre();
+				}
+			}
+
+			System.out.printf("%15s %15d %20s %20s %27s",
+					p.getNombre(),
+					p.getDocumento(),
+					beca,
+					String.format("%.2f", p.calcularPromedio()),
+					fechaInicio);
+			System.out.println();
+		}
+		System.out.print("--------------------------------------------------");
+		System.out.println("-----------------------------------------------------");
+	}
+
 	public Facultad getFacultad() {
 		return facultad;
 	}
@@ -78,5 +114,6 @@ public class Profesor extends Persona implements Serializable, Comparable<Profes
 	public LineasEnfasis getLineaEnfasis() {
 		return null;
 	}
+
 
 }
