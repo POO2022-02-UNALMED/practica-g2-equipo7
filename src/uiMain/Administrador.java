@@ -966,12 +966,6 @@ public class Administrador {
 		}
 	}
 
-	/**
-	 * 
-	 */
-	/**
-	 * 
-	 */
 	private static void funcionalidad3() {
 		// Funcionalidad Becas.
 		int seleccion = 1;
@@ -1642,7 +1636,6 @@ public class Administrador {
 
 				if(estudianteConsultado == null){
 					System.out.println("Documento no encontrado");
-					funcionalidad5();
 				}
 
 				else {
@@ -1673,30 +1666,53 @@ public class Administrador {
 
 					switch (seleccion2){
 						case 1:
-							System.out.println('\n' + Estudiante.posicionEstudiante(estudianteConsultado, "semestre"));
+							System.out.println('\n' + "Posición " +
+									Estudiante.posicionEstudiante(estudianteConsultado, "semestre") +
+									" entre estudiantes del semestre " + estudianteConsultado.getSemestre() + '\n');
 							break;
 
 						case 2:
-							System.out.println('\n' + Estudiante.posicionEstudiante(estudianteConsultado, "facultad"));
+							if(Estudiante.posicionEstudiante(estudianteConsultado, "facultad").equals("NN")){
+								System.out.println("El estudiante no pertenece a ninguna facultad" + '\n');
+							}
+							else{
+								System.out.println('\n' + "Posición " +
+										Estudiante.posicionEstudiante(estudianteConsultado, "facultad") +
+										" entre estudiantes de la facultad " + estudianteConsultado.getFacultad().getNombre() + '\n');
+							}
 							break;
-
 						case 3:
-							System.out.println('\n' + Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis"));
+							if(Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis").equals("NN")){
+								System.out.println("El estudiante no pertenece a ninguna línea de enfásis" + '\n');
+							}
+							else{
+								System.out.println('\n' + "Posición " +
+										Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis") +
+										" entre estudiantes de la línea de enfásis " + estudianteConsultado.getLineaEnfasis() + '\n');
+							}
 							break;
 					}
 
-					funcionalidad5();
+				}
+				int terminacion = terminarPrograma();
+				switch (terminacion) {
+					case 1:
+						System.out.println(espaciado);
+						return;
+					case 0:
+						System.exit(0);
 				}
 			}
 		} while (seleccion > 2 || seleccion < 1);
 	}
 
 	private static void funcionalidad6(){
+		// Funcionalidad consulta de vinculados
 		int seleccion = 1;
 
 		do {
 			System.out.println(espaciado);
-			System.out.println("\n--- Menu Consulta vinculados ---\n");
+			System.out.println("\n--- Menu Consulta Vinculados ---\n");
 
 			if (seleccion != 1) {
 				System.out.println("--- Ingrese una opción valida ---\n");
@@ -1719,7 +1735,7 @@ public class Administrador {
 		switch (seleccion) {
 			case 1:
 				System.out.println(espaciado);
-				System.out.println(Estudiante.vistaGeneralEstudiantes());
+				Estudiante.vistaGeneralEstudiantes();
 				break;
 
 			case 2:

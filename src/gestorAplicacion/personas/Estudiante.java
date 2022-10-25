@@ -87,8 +87,7 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 							posEstudiante += 1;
 						}
 					}
-					return "Posición " + posEstudiante +
-							" entre estudiantes del semestre " + estudiante.getSemestre();
+					return String.valueOf(posEstudiante);
 				}
 
 			case "facultad":
@@ -99,11 +98,10 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 								posEstudiante += 1;
 							}
 						}
-						return "Posición " + posEstudiante +
-								" entre estudiantes de la facultad " + f.getNombre();
+						return String.valueOf(posEstudiante);
 					}
 				}
-				return "El estudiante no pertenece a ninguna facultad";
+				return "NN";
 
 			case "lineaEnfasis":
 				for (Facultad f : Facultad.getListaFacultades()) {
@@ -115,11 +113,10 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 								}
 							}
 						}
-						return "Posición " + posEstudiante +
-								" entre estudiantes de la línea de enfásis " + estudiante.getLineaEnfasis();
+						return String.valueOf(posEstudiante);
 					}
 				}
-				return "El estudiante no pertenece a ninguna línea de enfásis";
+				return "NN";
 
 			default:
 				return "Ingrese un rango de busqueda válido";
@@ -184,16 +181,43 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		return listaRecomendar;
 	}
 
-	public static String vistaGeneralEstudiantes(){
-		StringBuilder vista = new StringBuilder("Nombre\tDocumento\tCalidad\tPosSemestre\tPosFacultad\n");
+	public static void vistaGeneralEstudiantes(){
+		System.out.print("------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.printf("%15s %15s %24s %24s %18s %13s %13s %13s",
+				"NOMBRE", "DOCUMENTO", "BECA", "SUBSIDIO",
+				"CALIDAD", "PSEMESTRE", "PFACULTAD", "PLINEAENF");
+		System.out.print("\n------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
 		for (Estudiante e: listaEstudiantes) {
-			vista.append(e.getNombre() + '\t' +
-					e.getDocumento() + '\t' +
-					e.calidadEstudiante() + '\t' +
-					posicionEstudiante(e, "semestre")+ '\t' +
-					posicionEstudiante(e,"facultad") + '\n');
+			String beca = "No aplica";
+			String subsidio = "No aplica";
+
+			for(Beca b: Beca.getListaBecas()) {
+				if (b.getBeneficiarios().contains(e)) {
+					beca = b.getNombre();
+					break;
+				}
+			}
+			for(Subsidio s: Subsidio.getListaSubsidio()){
+				if(s.getBeneficiarios().contains(e)){
+					subsidio = s.getNombre();
+				}
+			}
+
+			System.out.printf("%15s %15d %24s %24s %18s %13s %13s %13s",
+					e.getNombre(),
+					e.getDocumento(),
+					beca,
+					subsidio,
+					e.calidadEstudiante(),
+					posicionEstudiante(e, "semestre"),
+					posicionEstudiante(e,"facultad"),
+					posicionEstudiante(e,"lineaEnfasis"));
+			System.out.println();
 		}
-		return vista.toString();
+		System.out.print("------------------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------------------");
 	}
 
 	public HashMap<Asignatura, Float> getAsignaturasInscritas() {
