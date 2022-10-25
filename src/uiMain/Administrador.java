@@ -21,17 +21,12 @@ public class Administrador {
 	private final static String espaciado = "\n \n \n";
 
 	public static void main(String args[]) {
-		// Departamento dpto = new Departamento (/' noffbre Archivo '/);
 
-		// NO BORRAR COMENTARIOS
 		 Serializador.DeserializarAsignaturas();
 		 Serializador.DeserializarBecas();
 		 Serializador.DeserializarFacultades();
 		 Serializador.DeserializarProfesores();
 		 Serializador.DeserializarEstudiantes();
-
-		// Declaracion asignaturas para testeos
-		//
 
 		int opcion;
 		do {
