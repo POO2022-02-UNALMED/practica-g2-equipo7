@@ -1220,7 +1220,7 @@ public class Administrador {
 			}
 
 			System.out.println("Seleccione una opción");
-			System.out.println("1. Ingresar el documento del Estudiante.");
+			System.out.println("1. Consultar por documento del Estudiante.");
 			System.out.println("2. Regresar al Inicio.");
 			System.out.print("Digite una opción: ");
 
@@ -1260,7 +1260,7 @@ public class Administrador {
 						System.out.println("¿Que información desea obtener acerca del estudiante?");
 						System.out.println("1. Consultar la posición del estudiante en su semestre");
 						System.out.println("2. Consultar la posición del estudiante en su facultad");
-						System.out.println("3. Consultar la posición del estudiante en su línea de enfasis");
+						System.out.println("3. Consultar la posición del estudiante en su línea de énfasis");
 						System.out.println("4. Regresar al Inicio");
 
 						System.out.print("Digite una opción: ");
@@ -1273,9 +1273,9 @@ public class Administrador {
 
 					switch (seleccion2){
 						case 1:
-							System.out.println('\n' + "Posición " +
-									Estudiante.posicionEstudiante(estudianteConsultado, "semestre") +
-									" entre estudiantes del semestre " + estudianteConsultado.getSemestre() + '\n');
+							System.out.println('\n' + "POSICIÓN: " +
+									Estudiante.posicionEstudiante(estudianteConsultado, "semestre") + '\n' +
+									"SEMESTRE = " + estudianteConsultado.getSemestre() + '\n');
 							break;
 
 						case 2:
@@ -1283,19 +1283,19 @@ public class Administrador {
 								System.out.println("El estudiante no pertenece a ninguna facultad" + '\n');
 							}
 							else{
-								System.out.println('\n' + "Posición " +
-										Estudiante.posicionEstudiante(estudianteConsultado, "facultad") +
-										" entre estudiantes de la facultad " + estudianteConsultado.getFacultad().getNombre() + '\n');
+								System.out.println('\n' + "POSICIÓN: " +
+										Estudiante.posicionEstudiante(estudianteConsultado, "facultad") + '\n' +
+										"FACULTAD: " + estudianteConsultado.getFacultad().getNombre() + '\n');
 							}
 							break;
 						case 3:
 							if(Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis").equals("NN")){
-								System.out.println("El estudiante no pertenece a ninguna línea de enfásis" + '\n');
+								System.out.println("El estudiante no pertenece a ninguna línea de énfasis" + '\n');
 							}
 							else{
-								System.out.println('\n' + "Posición " +
-										Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis") +
-										" entre estudiantes de la línea de enfásis " + estudianteConsultado.getLineaEnfasis() + '\n');
+								System.out.println('\n' + "POSICIÓN: " +
+										Estudiante.posicionEstudiante(estudianteConsultado, "lineaEnfasis") + '\n' +
+										"LÍNEA DE ÉNFASIS: " + estudianteConsultado.getLineaEnfasis() + '\n');
 							}
 							break;
 					}

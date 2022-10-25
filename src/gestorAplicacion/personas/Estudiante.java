@@ -87,8 +87,8 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 							posEstudiante += 1;
 						}
 					}
-					return String.valueOf(posEstudiante);
 				}
+				return String.valueOf(posEstudiante);
 
 			case "facultad":
 				for (Facultad f : Facultad.getListaFacultades()) {
@@ -96,6 +96,11 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 						for (Estudiante e : f.getEstudiantes()) {
 							if (e.getPromedio() > estudiante.getPromedio()) {
 								posEstudiante += 1;
+							}
+							if(e.getPromedio() == estudiante.getPromedio()){
+								if(e.getSemestre() > estudiante.getSemestre()){
+									posEstudiante += 1;
+								}
 							}
 						}
 						return String.valueOf(posEstudiante);
@@ -110,6 +115,11 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 							if (e.getLineaEnfasis() == estudiante.getLineaEnfasis()) {
 								if (e.getPromedio() > estudiante.getPromedio()) {
 									posEstudiante += 1;
+								}
+								if(e.getPromedio() == estudiante.getPromedio()){
+									if(e.getSemestre() > estudiante.getSemestre()){
+										posEstudiante += 1;
+									}
 								}
 							}
 						}
@@ -186,7 +196,7 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		System.out.println("------------------------------------------------------------------------");
 		System.out.printf("%15s %15s %24s %24s %18s %13s %13s %13s",
 				"NOMBRE", "DOCUMENTO", "BECA", "SUBSIDIO",
-				"CALIDAD", "PSEMESTRE", "PFACULTAD", "PLINEAENF");
+				"CALIDAD", "PSEMESTRE", "PFACULTAD", "PLINEA");
 		System.out.print("\n------------------------------------------------------------------------");
 		System.out.println("------------------------------------------------------------------------");
 		for (Estudiante e: listaEstudiantes) {
@@ -218,6 +228,9 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 		}
 		System.out.print("------------------------------------------------------------------------");
 		System.out.println("------------------------------------------------------------------------");
+		System.out.println("\nPSEMESTRE: Posición del estudiante dentro de su semestre");
+		System.out.println("PFACULTAD: Posición del estudiante dentro de su facultad");
+		System.out.println("PLINEA: Posición del estudiante dentro de su línea de énfasis\n");
 	}
 
 	public HashMap<Asignatura, Float> getAsignaturasInscritas() {
@@ -237,7 +250,7 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	}
 
 	public int getSemestre() {
-		return semestre;
+		return this.semestre;
 	}
 
 	public void setSemestre(int semestre) {
