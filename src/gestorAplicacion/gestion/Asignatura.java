@@ -29,7 +29,6 @@ public class Asignatura implements Serializable {
 	}
 
 	public Asignatura() {
-		this("NR",3, null, null, null);
 	}
 
 	public int getCreditos() {
@@ -79,6 +78,7 @@ public class Asignatura implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public void agregarProfesor(Profesor nombre) {
 		this.profesor.add(nombre);
 	}

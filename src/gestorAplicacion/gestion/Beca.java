@@ -5,7 +5,7 @@ import java.util.*;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-public class Beca implements Serializable{
+public class Beca implements Serializable {
 
 	/**
 	 * 
@@ -43,7 +43,7 @@ public class Beca implements Serializable{
 		HashMap<Facultad, Integer> cuposCopy = new HashMap<>(cuposPorFacultad);
 		Collections.sort(Estudiante.getListaEstudiantes());
 		Collections.sort(Profesor.getListaProfesores());
-		
+
 		for (Facultad facultad : cuposCopy.keySet()) {
 
 			if (isProfesoral) {
@@ -73,23 +73,23 @@ public class Beca implements Serializable{
 
 	public int cuposSobrantes() {
 		int total = 0;
-		for (Facultad f: cuposPorFacultad.keySet()) {
-			total+=cuposPorFacultad.get(f);
+		for (Facultad f : cuposPorFacultad.keySet()) {
+			total += cuposPorFacultad.get(f);
 		}
-		return total-beneficiarios.size();
+		return total - beneficiarios.size();
 	}
+
 	public ArrayList<Persona> getBeneficiarios() {
 		return beneficiarios;
 	}
-	
+
 	public float promedioBeneficiarios() {
 		float total = 0;
-		for (Persona p: beneficiarios) {
-			total+=p.calcularPromedio();
-			}
-		return total/beneficiarios.size();
+		for (Persona p : beneficiarios) {
+			total += p.calcularPromedio();
+		}
+		return total / beneficiarios.size();
 	}
-	
 
 	public float getCriterio() {
 		return criterio;
@@ -102,7 +102,6 @@ public class Beca implements Serializable{
 	public void setCupos(int cupos) {
 		this.cupos = cupos;
 	}
-
 
 	public static ArrayList<Beca> getListaBecas() {
 		return listaBecas;

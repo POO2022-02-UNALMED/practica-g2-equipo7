@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.io.Serializable;
 import java.lang.Math;
 import baseDatos.Serializador;
 import gestorAplicacion.gestion.*;
 import gestorAplicacion.personas.*;
 
-public class Subsidio {
+public class Subsidio implements Serializable{
 	/**
 	 * 
 	 */

@@ -17,11 +17,11 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 	private LineasEnfasis lineaEnfasis;
 	private ArrayList<Asignatura> asignaturasAprobadas;
 	private Facultad facultad;
-	public static ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
-	int estrato;
-	float ingresosFamiliares;
-	boolean colegioPublico;
-	int numeroFamiliares;
+	private static ArrayList<Estudiante> listaEstudiantes = new ArrayList<Estudiante>();
+	private int estrato;
+	private float ingresosFamiliares;
+	private boolean colegioPublico;
+	private int numeroFamiliares;
 
 	public Estudiante(int documento, String nombre, int edad, HashMap<Asignatura, Float> asignaturasInscritas,
 			float promedio, int semestre, LineasEnfasis lineaEnfasis, ArrayList<Asignatura> asignaturasAprobadas,
