@@ -39,8 +39,7 @@ public class Administrador {
 			System.out.println(" 3. Información de Becas");
 			System.out.println(" 4. Informacion de Subsidios Estudiantiles");
 			System.out.println(" 5. Consultar posición de un estudiante");
-			System.out.println(" 6. Consultar vinculados");
-			System.out.println(" 7. Salir del Sistema");
+			System.out.println(" 6. Salir del Sistema");
 			System.out.print("Teclee opcion: ");
 			opcion = (int) readLong();
 
@@ -61,9 +60,6 @@ public class Administrador {
 				funcionalidad5();
 				break;
 			case 6:
-				funcionalidad6();
-				break;
-			case 7:
 				Serializador.SerializarAsignaturas();
 				Serializador.SerializarBecas();
 				Serializador.SerializarFacultades();
@@ -71,10 +67,12 @@ public class Administrador {
 				Serializador.SerializarEstudiantes();
 				Serializador.SerializarSubsidios();
 
+
+
 				System.exit(0);
 				break;
 			}
-		} while (opcion != 7);
+		} while (opcion != 6);
 	}
 
 	private static int terminarPrograma() {
@@ -196,15 +194,11 @@ public class Administrador {
 					subOpcion1 = (int) readLong();
 
 					if (subOpcion1 == 2) {
-						int terminacion = terminarPrograma();
-						switch (terminacion) {
-						case 1:
+
 							System.out.println(espaciado);
 							return;
-						case 0:
-							System.exit(0);
+
 						}
-					}
 					if (subOpcion1 == 1) {
 						for (Asignatura i : recomendacion) {
 							ArrayList<Profesor> profesores = i.getProfesor();
@@ -550,7 +544,7 @@ public class Administrador {
 			LineasEnfasis lineaElegida = LineasEnfasis.values()[subOpcion1 - 1];
 
 			fmt = new Formatter();
-			fmt.format("%15s %15s %15s\n", "Nombre", "Calidad", "Facultad");
+			fmt.format("%15s %15s %15s\n", "Nombre", "Calidad", "Linea Enfasis");
 
 			for (Estudiante e : Estudiante.getListaEstudiantes()) {
 				if (e.getLineaEnfasis().equals(lineaElegida)) {
@@ -560,7 +554,7 @@ public class Administrador {
 
 			System.out.println(espaciado);
 			System.out.println("--- Menu Calidad de Estudiante ---");
-			System.out.println("Opcion Elegida: Consultar la calidad de los estudiantes inscritos a una facultad");
+			System.out.println("Opcion Elegida: Consultar la calidad de los estudiantes inscritos a una Linea");
 			System.out.println("Linea de Enfasis Elegida: " + lineaElegida.toString() + "\n");
 
 			System.out.println(fmt);

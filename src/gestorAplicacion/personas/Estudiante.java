@@ -91,6 +91,7 @@ public class Estudiante extends Persona implements Serializable, Comparable<Estu
 				return String.valueOf(posEstudiante);
 
 			case "facultad":
+				
 				for (Facultad f : Facultad.getListaFacultades()) {
 					if (f.getEstudiantes().contains(estudiante)) {
 						for (Estudiante e : f.getEstudiantes()) {
