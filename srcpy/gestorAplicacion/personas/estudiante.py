@@ -57,7 +57,7 @@ class Estudiante(Persona):
     def calidadEstudiante(self):
         from gestorAplicacion.gestion.calidadEstudiante import CalidadEstudiante
 
-        return CalidadEstudiante.ObtenerCalidadEstudiante(self.getPromedio())
+        return CalidadEstudiante.ObtenerCalidadEstudiante(self.calcularPromedio())
 
     @staticmethod
     def posicionEstudiante(estudiante_seleccionado, dominio: str):

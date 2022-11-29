@@ -7,12 +7,13 @@ class CalidadEstudiante(Enum):
     ALTA = 3
     SOBRESALIENTE = 4
 
-    def ObtenerCalidadEstudiante(self, promedio):
+    @staticmethod
+    def ObtenerCalidadEstudiante(promedio):
         if promedio <= 3.5:
-            return CalidadEstudiante.BAJA
+            return CalidadEstudiante.BAJA.name
         elif promedio <= 4.0:
-            return CalidadEstudiante.MEDIA
+            return CalidadEstudiante.MEDIA.name
         elif promedio <= 4.5:
-            return CalidadEstudiante.ALTA
-        else:
-            CalidadEstudiante.SOBRESALIENTE
+            return CalidadEstudiante.ALTA.name
+
+        return CalidadEstudiante.SOBRESALIENTE.name

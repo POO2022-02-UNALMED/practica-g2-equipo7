@@ -37,8 +37,10 @@ from funcionalidades.funcionalidadVistaGeneralEstudiantes import (
 from funcionalidades.funcionalidadInformacionSubsidios import (
     FuncionalidadInformacionSubsidio,
 )
+from funcionalidades.funcionalidadCalidadEstudiante import (
+    FuncionalidadCalidadEstudiante
+)
 from baseDatos.serializador import serializar
-
 
 ventana = None
 ventanaInicio = None
@@ -173,7 +175,7 @@ def asignacionMenuUsuario(ventana):
     menuEstudiantes.add_command(
         label="Consultar posicion", command=funcionalidadPosicionEstudiante
     )
-    menuEstudiantes.add_command(label="Calidad de estudiante")
+    menuEstudiantes.add_command(label="Calidad de estudiante", command=funcionalidadCalidadEstudiante)
     menuEstudiantes.add_command(
         label="Estudiantes vinculados", command=funcionalidadVistaGeneralEstudiantes
     )
@@ -252,7 +254,6 @@ def cambiarImagen(e):
 
 # Por medio de la siguiente función se cambia la hoja de vida y las imágenes asociadas a cada autor de la aplicación.
 def cambiarBio(e):
-
     global labelFoto1, labelFoto2, labelFoto3, labelFoto4, cuerpoBio
 
     # Sistema para loopear por las vidas y fotos
@@ -317,7 +318,6 @@ def salirInicio():
         detail="Clic en Sí para salir",
     )
     if salir:
-
         serializar()
         ventana.destroy()
 
@@ -359,7 +359,7 @@ def salirUsuario():
 def ayuda():
     autores = """Autores:
 
-- Felipe Cabeza Parada
+- Felipe Cabeza Pareja
 - Zedin Daniel Garzon Otero
 - Juan Esteban Mejia Espejo
 - Santiago Sosa Garcia
@@ -441,6 +441,12 @@ def funcionalidadPosicionEstudiante():
     ventanaPosicionEstudiante.mostrar()
 
 
+def funcionalidadCalidadEstudiante():
+    ocultarTodo()
+    ventanaCalidadEstudiante.pack()
+    ventanaCalidadEstudiante.mostrar()
+
+
 def funcionalidadVistaGeneralEstudiantes():
     ocultarTodo()
     ventanaVistaGeneralEstudiantes.pack()
@@ -477,7 +483,7 @@ def funcionalidadInformacionSubsidios():
 def inicializarVentanas():
     global ventanaBecas, ventanaCrearProfesor, ventanaConsultarVinculado, ventanaTablaBeneficiadosBeca, ventanaInformacionBecas, ventanaRecomendarAsignatura
     global ventanaCrearEstudiante, ventanaPosicionEstudiante, ventanaVistaGeneralEstudiantes, ventanaCrearAsignatura, ventanaConsultarBeneficiario, ventanaTablaBeneficiadosSubsidio
-    global ventanaAsignarAsignaturasEstudiantes, ventanaAsignarAsignaturasProfesores, ventanaCrearBecas, ventanaInformacionSubsidios
+    global ventanaAsignarAsignaturasEstudiantes, ventanaAsignarAsignaturasProfesores, ventanaCrearBecas, ventanaInformacionSubsidios, ventanaCalidadEstudiante
 
     ventanaRecomendarAsignatura = FuncionalidadRecomendarAsignatura(ventana)
     ventanaCrearProfesor = CrearProfesores(ventana)
@@ -493,6 +499,7 @@ def inicializarVentanas():
     ventanaTablaBeneficiadosSubsidio = FuncionalidadTablaBeneficiadosSubsidio(ventana)
     ventanaAsignarAsignaturasEstudiantes = AsignarAsignaturasEstudiantes(ventana)
     ventanaAsignarAsignaturasProfesores = AsignarAsignaturasProfesores(ventana)
+    ventanaCalidadEstudiante = FuncionalidadCalidadEstudiante(ventana)
     ventanaCrearBecas = CrearBecas(ventana)
     ventanaInformacionSubsidios = FuncionalidadInformacionSubsidio(ventana)
     ventanaCrearBecas = CrearBecas(ventana)
