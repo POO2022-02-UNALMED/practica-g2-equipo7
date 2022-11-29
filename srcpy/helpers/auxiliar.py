@@ -8,8 +8,8 @@ BIOFELIPE = """Nombre: Felipe
 Fecha de nacimiento:
 Aspiraciones: """
 BIOZEDIN = """Nombre: Zedin
-Fecha de nacimiento:
-Aspiraciones: """
+Fecha de nacimiento 09/11/2000:
+Aspiraciones: Convertirme en un desarrollador full stack"""
 BIOSANTIAGO = """Nombre: Santiago
 Fecha de nacimiento: 12/12/2003
 Aspiraciones: Ser mejor que ayer"""
