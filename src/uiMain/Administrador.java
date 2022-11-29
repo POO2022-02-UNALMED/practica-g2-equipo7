@@ -32,6 +32,11 @@ public class Administrador {
 
 		int opcion;
 		do {
+			System.out.println(Estudiante.getListaEstudiantes());
+			System.out.println();
+
+			System.out.println(Estudiante.getListaEstudiantes());
+
 			System.out.println("\n--- Menu Inicial ---\n");
 			System.out.println("¿Que operacion desea realizar?");
 			System.out.println(" 1. Recomendar Asignaturas");

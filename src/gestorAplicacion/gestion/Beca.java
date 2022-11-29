@@ -39,7 +39,6 @@ public class Beca implements Serializable {
 	}
 
 	public void setBeneficiarios() {
-
 		HashMap<Facultad, Integer> cuposCopy = new HashMap<>(cuposPorFacultad);
 		Collections.sort(Estudiante.getListaEstudiantes());
 		Collections.sort(Profesor.getListaProfesores());
