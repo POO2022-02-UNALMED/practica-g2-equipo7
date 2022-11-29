@@ -2,8 +2,8 @@ BIOJUANES = """Nombre: Juanes
 Fecha de nacimiento: 06/06/2002
 Aspiraciones: Adquirir conocimientos en Inteligencia Artificial"""
 BIOANDRES = """Nombre: Andres
-Fecha de nacimiento:
-Aspiraciones: """
+Fecha de nacimiento: 06/03
+Aspiraciones: Ser un referente latino americano de inteligencia artificial y deep learning"""
 BIOFELIPE = """Nombre: Felipe
 Fecha de nacimiento: 04/10/2001
 Aspiraciones: Aprender desarrollo movil"""

@@ -38,7 +38,7 @@ from funcionalidades.funcionalidadInformacionSubsidios import (
     FuncionalidadInformacionSubsidio,
 )
 from funcionalidades.funcionalidadCalidadEstudiante import (
-    FuncionalidadCalidadEstudiante
+    FuncionalidadCalidadEstudiante,
 )
 from baseDatos.serializador import serializar
 
@@ -75,6 +75,7 @@ def ocultarTodo():
     ventanaCrearBecas.pack_forget()
     ventanaVistaGeneralEstudiantes.pack_forget()
     ventanaInformacionSubsidios.pack_forget()
+    ventanaCalidadEstudiante.pack_forget()
 
 
 def iniciarAplicacion():
@@ -175,7 +176,9 @@ def asignacionMenuUsuario(ventana):
     menuEstudiantes.add_command(
         label="Consultar posicion", command=funcionalidadPosicionEstudiante
     )
-    menuEstudiantes.add_command(label="Calidad de estudiante", command=funcionalidadCalidadEstudiante)
+    menuEstudiantes.add_command(
+        label="Calidad de estudiante", command=funcionalidadCalidadEstudiante
+    )
     menuEstudiantes.add_command(
         label="Estudiantes vinculados", command=funcionalidadVistaGeneralEstudiantes
     )

@@ -27,6 +27,10 @@ class FuncionalidadConsultarVinculado(tk.Frame):
         self.borrar = tk.Button(master=self, text="Borrar", command=self.borrarInfo)
 
     def mostrar(self):
+        listaBecas = [beca.getNombre() for beca in Beca.getListabecas()]
+        self.becaSeleccionada = ttk.Combobox(
+            master=self, state="readonly", values=listaBecas
+        )
         self.nombre.grid(row=0, column=0, columnspan=2, pady=20)
         self.subnombre.grid(row=1, column=0, columnspan=2, pady=20)
         self.infoBeca.grid(row=2, column=0, pady=20)
@@ -50,7 +54,6 @@ class FuncionalidadConsultarVinculado(tk.Frame):
         self.becaSeleccionada.set("")
         self.documetoIngresado.delete(0, "end")
         for estudiante in becaElegida.getBeneficiarios():
-            print([i.getDocumento() for i in becaElegida.getBeneficiarios()])
             if estudiante.getDocumento() == documento:
                 mensaje = (
                     "El vinculado con documento " + str(documento) + " SI es elegible"

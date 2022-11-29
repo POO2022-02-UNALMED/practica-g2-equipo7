@@ -78,6 +78,10 @@ class FuncionalidadTablaBeneficiadosSubsidio(tk.Frame):
         self.fieldFrame.crearBotones(metodoAceptarBtn, metodoBorrar)
 
     def mostrar(self):
+        self.fieldFrame._tipos[0] = [
+            subsidio.getNombre() for subsidio in Subsidio.getListaSubsidio()
+        ]
+
         self.fieldFrame.actualizacion()
         self.nombreFrame.grid(row=0, column=0, columnspan=2)
         self.fieldFrame.grid(row=1, column=0, columnspan=2)

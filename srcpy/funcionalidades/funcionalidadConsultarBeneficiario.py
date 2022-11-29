@@ -34,6 +34,12 @@ class FuncionalidadConsultarBeneficiario(tk.Frame):
         self.borrar = tk.Button(master=self, text="Borrar", command=self.borrarInfo)
 
     def mostrar(self):
+        listaSubsidios = [
+            subsidio.getNombre() for subsidio in Subsidio.getListaSubsidio()
+        ]
+        self.subsidioSeleccionado = ttk.Combobox(
+            master=self, state="readonly", values=listaSubsidios
+        )
         self.nombre.grid(row=0, column=0, columnspan=2, pady=20)
         self.subnombre.grid(row=1, column=0, columnspan=2, pady=20)
         self.infoBeca.grid(row=2, column=0, pady=20)
